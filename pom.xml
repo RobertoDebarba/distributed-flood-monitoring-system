@@ -10,6 +10,7 @@
     <modules>
         <module>distributed-flood-monitoring-system-api</module>
         <module>distributed-flood-monitoring-system-core</module>
+        <module>distributed-flood-monitoring-system-consumer</module>
     </modules>
 
     <build>
