@@ -7,11 +7,11 @@
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>jersey.config.server.provider.packages</param-name>
-            <param-value>br.com.robertodebarba.jersey_example_project</param-value>
+            <param-value>br.com.robertodebarba.floodmonitoring</param-value>
         </init-param>
         <init-param>
 		    <param-name>javax.ws.rs.Application</param-name>
-		    <param-value>br.com.robertodebarba.jersey_example_project.core.MyApplication</param-value>
+		    <param-value>br.com.robertodebarba.floodmonitoring.api.MyApplication</param-value>
 		  </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
