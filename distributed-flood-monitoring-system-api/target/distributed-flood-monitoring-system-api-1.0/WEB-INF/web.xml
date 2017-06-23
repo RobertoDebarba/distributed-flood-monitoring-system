@@ -11,7 +11,7 @@
         </init-param>
         <init-param>
 		    <param-name>javax.ws.rs.Application</param-name>
-		    <param-value>br.com.robertodebarba.floodmonitoring.api.MyApplication</param-value>
+		    <param-value>br.com.robertodebarba.floodmonitoring.api.FloodMonitoringApp</param-value>
 		  </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
