@@ -3,6 +3,7 @@ package br.com.robertodebarba.floodmonitoring.api.floodgate
 import br.com.robertodebarba.floodmonitoring.core.Dam
 import br.com.robertodebarba.floodmonitoring.core.FloodGate
 import br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase
+import org.mongodb.morphia.query.FindOptions
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
@@ -16,15 +17,21 @@ class FloodGateApi {
     @GET
     fun getFloodGates(@QueryParam("name") name: String?, @QueryParam("city") city: String?, @QueryParam("federationunit") federationUnit: String?): Response {
         try {
+            val floodGateId = FloodGate::id.name
+            val findOptions = FindOptions().limit(50)
+
             if (name.isNullOrBlank() && city.isNullOrBlank() && federationUnit.isNullOrBlank()){
-                val floodgates = MongoDatabase.instance.createQuery(FloodGate::class.java).asList()
+                val floodgates = MongoDatabase.instance.createQuery(FloodGate::class.java)
+                        .order("-$floodGateId")
+                        .asList(findOptions)
                 return Response.ok().entity(floodgates).build()
             } else if (!name.isNullOrBlank() && !city.isNullOrBlank() && !federationUnit.isNullOrBlank()) {
                 val floodgates = MongoDatabase.instance.createQuery(FloodGate::class.java)
                         .field(Dam::name.name).equal(name)
                         .field(Dam::city.name).equal(city)
                         .field(Dam::federationUnit.name).equal(federationUnit)
-                        .asList()
+                        .order("-$floodGateId")
+                        .asList(findOptions)
                 return Response.ok().entity(floodgates).build()
             } else {
                 return Response.status(Response.Status.BAD_REQUEST).build()

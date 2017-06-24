@@ -14,7 +14,11 @@ class DamApi {
     @GET
     fun getDams(): Response {
         try {
-            val dams = MongoDatabase.instance.createQuery(Dam::class.java).asList()
+            val damId = Dam::id.name
+
+            val dams = MongoDatabase.instance.createQuery(Dam::class.java)
+                    .order("-$damId")
+                    .asList()
             return Response.ok().entity(dams).build()
 
         } catch (e: Exception) {

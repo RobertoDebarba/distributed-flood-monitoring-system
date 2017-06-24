@@ -2,6 +2,7 @@ package br.com.robertodebarba.floodmonitoring.api.rainfall
 
 import br.com.robertodebarba.floodmonitoring.core.RainFall
 import br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase
+import org.mongodb.morphia.query.FindOptions
 import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
@@ -15,15 +16,21 @@ class RainFallApi {
     @GET
     fun getRainFalls(@QueryParam("stationname") stationName: String?, @QueryParam("city") city: String?, @QueryParam("federationunit") federationUnit: String?): Response {
         try {
+            val rainFallId = RainFall::id.name
+            val findOptions = FindOptions().limit(10)
+
             if (stationName.isNullOrBlank() && city.isNullOrBlank() && federationUnit.isNullOrBlank()){
-                val rainfalls = MongoDatabase.instance.createQuery(RainFall::class.java).asList()
+                val rainfalls = MongoDatabase.instance.createQuery(RainFall::class.java)
+                        .order("-$rainFallId")
+                        .asList(findOptions)
                 return Response.ok().entity(rainfalls).build()
             } else if (!stationName.isNullOrBlank() && !city.isNullOrBlank() && !federationUnit.isNullOrBlank()) {
                 val rainfalls = MongoDatabase.instance.createQuery(RainFall::class.java)
                         .field(RainFall::stationName.name).equal(stationName)
                         .field(RainFall::city.name).equal(city)
                         .field(RainFall::federationUnit.name).equal(federationUnit)
-                        .asList()
+                        .order("-$rainFallId")
+                        .asList(findOptions)
                 return Response.ok().entity(rainfalls).build()
             } else {
                 return Response.status(Response.Status.BAD_REQUEST).build()
