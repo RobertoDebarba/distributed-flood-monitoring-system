@@ -13,7 +13,7 @@ import java.time.ZonedDateTime
 class FloodGate {
 
     @Id
-    private val id: ObjectId? = null
+    val id: ObjectId? = null
     private val time: ZonedDateTime? = null
     private val status: Boolean = false
     @Reference

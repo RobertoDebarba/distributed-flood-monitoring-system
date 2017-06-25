@@ -13,7 +13,7 @@ import java.time.ZonedDateTime
 class DamLevel {
 
     @Id
-    private val id: ObjectId? = null
+    val id: ObjectId? = null
     private val time: ZonedDateTime? = null
     private val level: Float = 0.toFloat()
     @Reference
