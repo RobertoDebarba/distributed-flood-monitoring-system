@@ -2,10 +2,8 @@ package br.com.robertodebarba.floodmonitoring.api.riverlevel
 
 import br.com.robertodebarba.floodmonitoring.core.RiverLevel
 import br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase
-import javax.ws.rs.Consumes
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.ws.rs.Produces
+import org.mongodb.morphia.query.FindOptions
+import javax.ws.rs.*
 import javax.ws.rs.core.MediaType
 import javax.ws.rs.core.Response
 
@@ -15,18 +13,28 @@ import javax.ws.rs.core.Response
 class RiverLevelApi {
 
     @GET
-    fun getProducts(): Response {
+    fun getRiverLevels(@QueryParam("river") river: String?, @QueryParam("city") city: String?, @QueryParam("federationunit") federationUnit: String?): Response {
         try {
-            val level = RiverLevel()
-            level.river = "Rio dos Cedros"
-            level.city = "Timbó"
-            level.federationUnit = "SC"
-            level.level = 20F
+            val riverLevelId = RiverLevel::id.name
+            val findOptions = FindOptions().limit(10)
 
-            MongoDatabase.instance.save(level)
-            val riverLevels = MongoDatabase.instance.createQuery(RiverLevel::class.java).asList()
+            if (river.isNullOrBlank() && city.isNullOrBlank() && federationUnit.isNullOrBlank()){
+                val riverLevels = MongoDatabase.instance.createQuery(RiverLevel::class.java)
+                        .order("-$riverLevelId")
+                        .asList(findOptions)
+                return Response.ok().entity(riverLevels).build()
+            } else if (!river.isNullOrBlank() && !city.isNullOrBlank() && !federationUnit.isNullOrBlank()) {
+                val riverLevels = MongoDatabase.instance.createQuery(RiverLevel::class.java)
+                        .field(RiverLevel::river.name).equal(river)
+                        .field(RiverLevel::city.name).equal(city)
+                        .field(RiverLevel::federationUnit.name).equal(federationUnit)
+                        .order("-$riverLevelId")
+                        .asList(findOptions)
+                return Response.ok().entity(riverLevels).build()
+            } else {
+                return Response.status(Response.Status.BAD_REQUEST).build()
+            }
 
-            return Response.ok().entity(riverLevels).build()
         } catch (e: Exception) {
             return Response.serverError().entity(e).build()
         }

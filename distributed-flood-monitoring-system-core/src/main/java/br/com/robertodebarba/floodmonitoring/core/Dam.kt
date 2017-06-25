@@ -14,7 +14,7 @@ class Dam {
     var name: String? = null
     var city: String? = null
     var federationUnit: String? = null
-    var capacity: Float = 0.toFloat()
-    var floodgates: Int = 0
+    private var capacity: Float = 0.toFloat()
+    private var floodgates: Int = 0
 
 }
