@@ -13,10 +13,16 @@ import java.time.ZonedDateTime
 class FloodGate {
 
     @Id
-    private val id: ObjectId? = null
-    private val time: ZonedDateTime? = null
-    private val status: Boolean = false
+    var id: ObjectId? = null
+    var name: Int = 0
+    var time: ZonedDateTime? = null
+    var status: Boolean = false
     @Reference
-    private val dam: Dam? = null
+    var dam: Dam? = null
+
+    override fun toString(): String {
+        return "FloodGate(time=$time, status=$status)"
+    }
+
 
 }

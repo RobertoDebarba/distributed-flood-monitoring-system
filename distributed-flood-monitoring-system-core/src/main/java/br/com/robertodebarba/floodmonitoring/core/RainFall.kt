@@ -12,11 +12,11 @@ import java.time.ZonedDateTime
 class RainFall {
 
     @Id
-    private val id: ObjectId? = null
-    private val city: String? = null
-    private val federationUnit: String? = null
-    private val stationName: String? = null
-    private val time: ZonedDateTime? = null
-    private val intensity: Float = 0.toFloat()
+    var id: ObjectId? = null
+    var city: String? = null
+    var federationUnit: String? = null
+    var stationName: String? = null
+    var time: ZonedDateTime? = null
+    var intensity: Float = 0.toFloat()
 
 }

@@ -11,3 +11,12 @@ Distributed flood monitoring system
 ```
 	sudo service mongod start
 ```
+
+# Prepare rabbitmq
+
+- install rabitmq-server
+- run rabitmq server
+
+```
+	sudo service rabbitmq-server start
+```
