@@ -1,6 +1,8 @@
 package br.com.robertodebarba.floodmonitoring.core
 
+import br.com.robertodebarba.floodmonitoring.core.Deserializer.ZonedDateTimeAdapter
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.google.gson.annotations.JsonAdapter
 import org.bson.types.ObjectId
 import org.mongodb.morphia.annotations.*
 
@@ -12,11 +14,12 @@ import java.time.ZonedDateTime
 class RainFall {
 
     @Id
-    val id: ObjectId? = null
-    val city: String? = null
-    val federationUnit: String? = null
-    val stationName: String? = null
-    val time: ZonedDateTime? = null
-    val intensity: Float = 0.toFloat()
+    var id: ObjectId? = null
+    var city: String? = null
+    var federationUnit: String? = null
+    var stationName: String? = null
+    @JsonAdapter(ZonedDateTimeAdapter::class)
+    var time: ZonedDateTime? = null
+    var intensity: Float = 0.toFloat()
 
 }
