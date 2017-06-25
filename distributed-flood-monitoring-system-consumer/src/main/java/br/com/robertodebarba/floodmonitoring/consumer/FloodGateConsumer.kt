@@ -1,6 +1,7 @@
 package br.com.robertodebarba.floodmonitoring.consumer
 
 import br.com.robertodebarba.floodmonitoring.core.FloodGate
+import com.google.gson.Gson
 import com.rabbitmq.client.AMQP
 import com.rabbitmq.client.ConnectionFactory
 import com.rabbitmq.client.DefaultConsumer
@@ -22,10 +23,14 @@ class FloodGateConsumer{
             @Throws(IOException::class)
             override fun handleDelivery(consumerTag: String, envelope: Envelope,
                                         properties: AMQP.BasicProperties, body: ByteArray) {
-                val obj = body as FloodGate
-
-                //br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase.instance.save(obj)
-                println(" [x] Received '$obj'")
+                try {
+                    val obj = Gson().fromJson(String(body), FloodGate::class.java)
+                    //TODO Salvar no Bando de Dados
+                    //br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase.instance.save(obj)
+                    println(" [x] Received '$obj'")
+                }catch (e : Exception){
+                    println(e)
+                }
             }
         }
         channel.basicConsume(QUEUE_NAME, true, consumer)

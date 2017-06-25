@@ -2,7 +2,7 @@ package br.com.robertodebarba.floodmonitoring.producer
 
 import br.com.robertodebarba.floodmonitoring.core.Dam
 import br.com.robertodebarba.floodmonitoring.core.DamLevel
-import br.com.robertodebarba.floodmonitoring.core.Deserializer.GsonAdapted
+import com.google.gson.Gson
 
 import com.rabbitmq.client.ConnectionFactory
 import java.time.ZonedDateTime
@@ -34,12 +34,14 @@ class DamLevelProducer {
         val rnd = Random()
 
         while (true){
-            val differenca : Float = rnd.nextInt(5).toFloat()
+            var differenca : Float = rnd.nextInt(5).toFloat()
+            if(!rnd.nextBoolean()) differenca *= -1
             damLevel.level += differenca
+            if(damLevel.level < 0 ) damLevel.level = 0F
             damLevel.time = ZonedDateTime.now()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
-            channel.basicPublish("", QUEUE_NAME, null, GsonAdapted.toJson(damLevel).toByteArray())
+            channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(damLevel).toByteArray())
             println(damLevel)
             Thread.sleep(5000)
         }

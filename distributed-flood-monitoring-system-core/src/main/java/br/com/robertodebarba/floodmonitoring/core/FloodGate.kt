@@ -1,6 +1,8 @@
 package br.com.robertodebarba.floodmonitoring.core
 
+import br.com.robertodebarba.floodmonitoring.core.Deserializer.ZonedDateTimeAdapter
 import com.fasterxml.jackson.annotation.JsonInclude
+import com.google.gson.annotations.JsonAdapter
 import org.bson.types.ObjectId
 import org.mongodb.morphia.annotations.Entity
 import org.mongodb.morphia.annotations.Id
@@ -15,6 +17,7 @@ class FloodGate {
     @Id
     var id: ObjectId? = null
     var name: Int = 0
+    @JsonAdapter(ZonedDateTimeAdapter::class)
     var time: ZonedDateTime? = null
     var status: Boolean = false
     @Reference

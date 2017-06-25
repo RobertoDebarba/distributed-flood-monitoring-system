@@ -1,6 +1,5 @@
 package br.com.robertodebarba.floodmonitoring.producer
 
-import br.com.robertodebarba.floodmonitoring.core.RainFall
 import br.com.robertodebarba.floodmonitoring.core.RiverLevel
 import com.google.gson.Gson
 import com.rabbitmq.client.ConnectionFactory
@@ -26,7 +25,10 @@ class RiverLevelProducer {
 
         val rnd = Random()
         while (true){
-            riverLevel.level += rnd.nextFloat()
+            var diference = rnd.nextFloat()
+            if(!rnd.nextBoolean()) diference = diference * -1
+            riverLevel.level += diference
+            if(riverLevel.level < 0) riverLevel.level = 0F
             riverLevel.time = ZonedDateTime.now()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)

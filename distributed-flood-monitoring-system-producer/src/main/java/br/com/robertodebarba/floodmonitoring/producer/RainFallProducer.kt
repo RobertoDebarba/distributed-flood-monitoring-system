@@ -1,6 +1,5 @@
 package br.com.robertodebarba.floodmonitoring.producer
 
-import br.com.robertodebarba.floodmonitoring.core.Deserializer.GsonAdapted
 import br.com.robertodebarba.floodmonitoring.core.RainFall
 import com.google.gson.Gson
 import com.rabbitmq.client.ConnectionFactory
@@ -26,11 +25,14 @@ class RainFallProducer {
 
         val rnd = Random()
         while (true){
-            rainFall.intensity += rnd.nextFloat()
+            var diference = rnd.nextFloat()
+            if(!rnd.nextBoolean()) diference = diference * -1
+            rainFall.intensity += diference
+            if(rainFall.intensity < 0) rainFall.intensity = 0F
             rainFall.time = ZonedDateTime.now()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
-            channel.basicPublish("", QUEUE_NAME, null, GsonAdapted.toJson(rainFall).toByteArray())
+            channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(rainFall).toByteArray())
             println(rainFall)
             Thread.sleep(5000)
         }

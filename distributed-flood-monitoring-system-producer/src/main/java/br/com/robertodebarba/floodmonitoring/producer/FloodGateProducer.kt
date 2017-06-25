@@ -1,8 +1,8 @@
 package br.com.robertodebarba.floodmonitoring.producer
 
 import br.com.robertodebarba.floodmonitoring.core.Dam
-import br.com.robertodebarba.floodmonitoring.core.Deserializer.GsonAdapted
 import br.com.robertodebarba.floodmonitoring.core.FloodGate
+import com.google.gson.Gson
 import com.rabbitmq.client.ConnectionFactory
 import java.time.ZonedDateTime
 import java.util.*
@@ -39,7 +39,7 @@ class FloodGateProducer {
             flodGate.time = ZonedDateTime.now()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
-            channel.basicPublish("", QUEUE_NAME, null, GsonAdapted.toJson(flodGate).toByteArray())
+            channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(flodGate).toByteArray())
             println(flodGate)
             Thread.sleep(10000)
         }

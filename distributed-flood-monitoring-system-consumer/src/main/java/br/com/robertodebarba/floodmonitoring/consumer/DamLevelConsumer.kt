@@ -1,7 +1,6 @@
 package br.com.robertodebarba.floodmonitoring.consumer
 
 import br.com.robertodebarba.floodmonitoring.core.DamLevel
-import br.com.robertodebarba.floodmonitoring.core.Deserializer.GsonAdapted
 import com.google.gson.Gson
 import com.rabbitmq.client.ConnectionFactory
 import java.io.IOException
@@ -26,13 +25,13 @@ class DamLevelConsumer {
             override fun handleDelivery(consumerTag: String, envelope: Envelope,
                                         properties: AMQP.BasicProperties, body: ByteArray) {
 
-                println(" [x] Received '" + String(body) + "'")
                 try {
                     val obj = Gson().fromJson(String(body), DamLevel::class.java)
+                    //TODO Salvar no Bando de Dados
                     //br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase.instance.save(obj)
                     println(" [x] Received '$obj'")
                 }catch (e : Exception){
-                    print(e)
+                    println(e)
                 }
 
             }
