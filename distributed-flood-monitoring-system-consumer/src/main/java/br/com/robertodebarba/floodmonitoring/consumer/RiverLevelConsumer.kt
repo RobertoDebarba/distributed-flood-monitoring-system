@@ -1,6 +1,7 @@
 package br.com.robertodebarba.floodmonitoring.consumer
 
 import br.com.robertodebarba.floodmonitoring.core.RiverLevel
+import br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase
 import com.google.gson.Gson
 import com.rabbitmq.client.AMQP
 import com.rabbitmq.client.ConnectionFactory
@@ -24,10 +25,10 @@ class RiverLevelConsumer {
             override fun handleDelivery(consumerTag: String, envelope: Envelope,
                                         properties: AMQP.BasicProperties, body: ByteArray) {
                 try {
-                    val obj = Gson().fromJson(String(body), RiverLevel::class.java)
+                    val riverLevel = Gson().fromJson(String(body), RiverLevel::class.java)
                     //TODO Salvar no Bando de Dados
-                    //br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase.instance.save(obj)
-                    println(" [x] Received '$obj'")
+                    MongoDatabase.instance.save(riverLevel)
+                    println(" [x] Received '$riverLevel'")
                 }catch (e : Exception){
                     println(e)
                 }

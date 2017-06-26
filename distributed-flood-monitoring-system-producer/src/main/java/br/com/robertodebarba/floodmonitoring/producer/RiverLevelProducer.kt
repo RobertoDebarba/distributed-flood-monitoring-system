@@ -3,7 +3,6 @@ package br.com.robertodebarba.floodmonitoring.producer
 import br.com.robertodebarba.floodmonitoring.core.RiverLevel
 import com.google.gson.Gson
 import com.rabbitmq.client.ConnectionFactory
-import java.time.ZonedDateTime
 import java.util.*
 
 class RiverLevelProducer {
@@ -29,7 +28,7 @@ class RiverLevelProducer {
             if(!rnd.nextBoolean()) diference = diference * -1
             riverLevel.level += diference
             if(riverLevel.level < 0) riverLevel.level = 0F
-            riverLevel.time = ZonedDateTime.now()
+            riverLevel.time = Date()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
             channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(riverLevel).toByteArray())

@@ -36,7 +36,7 @@ class FloodGateProducer {
         val rnd = Random()
         while (true){
             flodGate.status = rnd.nextBoolean()
-            flodGate.time = ZonedDateTime.now()
+            flodGate.time = Date()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
             channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(flodGate).toByteArray())

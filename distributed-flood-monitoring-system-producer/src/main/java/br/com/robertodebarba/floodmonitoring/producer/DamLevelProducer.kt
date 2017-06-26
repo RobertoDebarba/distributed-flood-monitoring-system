@@ -38,7 +38,7 @@ class DamLevelProducer {
             if(!rnd.nextBoolean()) differenca *= -1
             damLevel.level += differenca
             if(damLevel.level < 0 ) damLevel.level = 0F
-            damLevel.time = ZonedDateTime.now()
+            damLevel.time = Date()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
             channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(damLevel).toByteArray())

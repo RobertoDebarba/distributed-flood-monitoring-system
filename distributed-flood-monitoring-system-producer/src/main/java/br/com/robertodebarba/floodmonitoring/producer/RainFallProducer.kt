@@ -29,7 +29,7 @@ class RainFallProducer {
             if(!rnd.nextBoolean()) diference = diference * -1
             rainFall.intensity += diference
             if(rainFall.intensity < 0) rainFall.intensity = 0F
-            rainFall.time = ZonedDateTime.now()
+            rainFall.time = Date()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
             channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(rainFall).toByteArray())
