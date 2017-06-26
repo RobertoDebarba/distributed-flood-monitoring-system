@@ -17,12 +17,12 @@ class FloodGateApi {
     @GET
     fun getFloodGates(@QueryParam("name") name: String?, @QueryParam("city") city: String?, @QueryParam("federationunit") federationUnit: String?): Response {
         try {
-            val floodGateId = FloodGate::id.name
+            val floodGateTime = FloodGate::time.name
             val findOptions = FindOptions().limit(50)
 
             if (name.isNullOrBlank() && city.isNullOrBlank() && federationUnit.isNullOrBlank()){
                 val floodgates = MongoDatabase.instance.createQuery(FloodGate::class.java)
-                        .order("-$floodGateId")
+                        .order("-$floodGateTime")
                         .asList(findOptions)
                 return Response.ok().entity(floodgates).build()
             } else if (!name.isNullOrBlank() && !city.isNullOrBlank() && !federationUnit.isNullOrBlank()) {
@@ -30,7 +30,7 @@ class FloodGateApi {
                         .field(Dam::name.name).equal(name)
                         .field(Dam::city.name).equal(city)
                         .field(Dam::federationUnit.name).equal(federationUnit)
-                        .order("-$floodGateId")
+                        .order("-$floodGateTime")
                         .asList(findOptions)
                 return Response.ok().entity(floodgates).build()
             } else {

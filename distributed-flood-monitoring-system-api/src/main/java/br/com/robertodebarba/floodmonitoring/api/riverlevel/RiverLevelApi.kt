@@ -15,12 +15,12 @@ class RiverLevelApi {
     @GET
     fun getRiverLevels(@QueryParam("river") river: String?, @QueryParam("city") city: String?, @QueryParam("federationunit") federationUnit: String?): Response {
         try {
-            val riverLevelId = RiverLevel::id.name
+            val riverLevelTime = RiverLevel::time.name
             val findOptions = FindOptions().limit(10)
 
             if (river.isNullOrBlank() && city.isNullOrBlank() && federationUnit.isNullOrBlank()){
                 val riverLevels = MongoDatabase.instance.createQuery(RiverLevel::class.java)
-                        .order("-$riverLevelId")
+                        .order("-$riverLevelTime")
                         .asList(findOptions)
                 return Response.ok().entity(riverLevels).build()
             } else if (!river.isNullOrBlank() && !city.isNullOrBlank() && !federationUnit.isNullOrBlank()) {
@@ -28,7 +28,7 @@ class RiverLevelApi {
                         .field(RiverLevel::river.name).equal(river)
                         .field(RiverLevel::city.name).equal(city)
                         .field(RiverLevel::federationUnit.name).equal(federationUnit)
-                        .order("-$riverLevelId")
+                        .order("-$riverLevelTime")
                         .asList(findOptions)
                 return Response.ok().entity(riverLevels).build()
             } else {

@@ -16,12 +16,12 @@ class RainFallApi {
     @GET
     fun getRainFalls(@QueryParam("stationname") stationName: String?, @QueryParam("city") city: String?, @QueryParam("federationunit") federationUnit: String?): Response {
         try {
-            val rainFallId = RainFall::id.name
+            val rainFallTime = RainFall::time.name
             val findOptions = FindOptions().limit(10)
 
             if (stationName.isNullOrBlank() && city.isNullOrBlank() && federationUnit.isNullOrBlank()){
                 val rainfalls = MongoDatabase.instance.createQuery(RainFall::class.java)
-                        .order("-$rainFallId")
+                        .order("-$rainFallTime")
                         .asList(findOptions)
                 return Response.ok().entity(rainfalls).build()
             } else if (!stationName.isNullOrBlank() && !city.isNullOrBlank() && !federationUnit.isNullOrBlank()) {
@@ -29,7 +29,7 @@ class RainFallApi {
                         .field(RainFall::stationName.name).equal(stationName)
                         .field(RainFall::city.name).equal(city)
                         .field(RainFall::federationUnit.name).equal(federationUnit)
-                        .order("-$rainFallId")
+                        .order("-$rainFallTime")
                         .asList(findOptions)
                 return Response.ok().entity(rainfalls).build()
             } else {

@@ -17,12 +17,12 @@ class DamLevelApi {
     @GET
     fun getDamLevels(@QueryParam("name") name: String?, @QueryParam("city") city: String?, @QueryParam("federationunit") federationUnit: String?): Response {
         try {
-            val damLevelId = DamLevel::id.name
+            val damLevelTime = DamLevel::time.name
             val findOptions = FindOptions().limit(10)
 
             if (name.isNullOrBlank() && city.isNullOrBlank() && federationUnit.isNullOrBlank()) {
                 val damLevels = MongoDatabase.instance.createQuery(DamLevel::class.java)
-                        .order("-$damLevelId")
+                        .order("-$damLevelTime")
                         .asList(findOptions)
                 return Response.ok().entity(damLevels).build()
             } else if (!name.isNullOrBlank() && !city.isNullOrBlank() && !federationUnit.isNullOrBlank()) {
@@ -30,7 +30,7 @@ class DamLevelApi {
                         .field(Dam::name.name).equal(name)
                         .field(Dam::city.name).equal(city)
                         .field(Dam::federationUnit.name).equal(federationUnit)
-                        .order("-$damLevelId")
+                        .order("-$damLevelTime")
                         .asList(findOptions)
                 return Response.ok().entity(damLevels).build()
             } else {
