@@ -1,6 +1,7 @@
 package br.com.robertodebarba.floodmonitoring.core.database
 
 import com.mongodb.MongoClient
+import com.mongodb.MongoClientURI
 import org.mongodb.morphia.Datastore
 import org.mongodb.morphia.Morphia
 
@@ -13,11 +14,11 @@ object MongoDatabase {
     }
 
     private fun createInstance(): Datastore {
-        val mongoDbUri = System.getenv("MONGODB_URI") ?: "localhost"
+        val mongoDbUri = System.getenv("MONGODB_URI") ?: "mongodb://localhost/floodMonitoring"
 
         val morphia = Morphia()
 
-        val datastore = morphia.createDatastore(MongoClient(mongoDbUri), "floodMonitoring")
+        val datastore = morphia.createDatastore(MongoClient(MongoClientURI(mongoDbUri)), null)
         datastore.ensureIndexes()
 
         return datastore
