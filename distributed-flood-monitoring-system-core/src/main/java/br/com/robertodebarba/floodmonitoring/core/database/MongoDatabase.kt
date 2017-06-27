@@ -15,10 +15,11 @@ object MongoDatabase {
 
     private fun createInstance(): Datastore {
         val mongoDbUri = System.getenv("MONGODB_URI") ?: "mongodb://localhost/floodMonitoring"
+        val mongoDbName = System.getenv("MONGODB_NAME") ?: "floodMonitoring"
 
         val morphia = Morphia()
 
-        val datastore = morphia.createDatastore(MongoClient(MongoClientURI(mongoDbUri)), null)
+        val datastore = morphia.createDatastore(MongoClient(MongoClientURI(mongoDbUri)), mongoDbName)
         datastore.ensureIndexes()
 
         return datastore
