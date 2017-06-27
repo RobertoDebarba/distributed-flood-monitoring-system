@@ -1,14 +1,15 @@
 package br.com.robertodebarba.floodmonitoring.producer
 
 import br.com.robertodebarba.floodmonitoring.core.RainFall
+import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
 import com.google.gson.Gson
-import com.rabbitmq.client.ConnectionFactory
-import java.time.ZonedDateTime
 import java.util.*
 
 class RainFallProducer {
+
     private val QUEUE_NAME = "RAINFALL"
-    fun Produce(){
+
+    fun Produce() {
         val rainFall = RainFall()
         println("Cidade : ")
         rainFall.city = readLine()
@@ -17,18 +18,15 @@ class RainFallProducer {
         println("Estação : ")
         rainFall.stationName = readLine()
 
-        val factory = ConnectionFactory()
-        factory.setHost("localhost")
-        val connection = factory.newConnection()
-        val channel = connection.createChannel()
+        val channel = AmqpConnection.instance.createChannel()
         rainFall.intensity = 20F
 
         val rnd = Random()
-        while (true){
+        while (true) {
             var diference = rnd.nextFloat()
-            if(!rnd.nextBoolean()) diference = diference * -1
+            if (!rnd.nextBoolean()) diference *= -1
             rainFall.intensity += diference
-            if(rainFall.intensity < 0) rainFall.intensity = 0F
+            if (rainFall.intensity < 0) rainFall.intensity = 0F
             rainFall.time = Date()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)

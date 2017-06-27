@@ -1,22 +1,20 @@
 package br.com.robertodebarba.floodmonitoring.consumer
 
 import br.com.robertodebarba.floodmonitoring.core.RiverLevel
+import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
 import br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase
 import com.google.gson.Gson
 import com.rabbitmq.client.AMQP
-import com.rabbitmq.client.ConnectionFactory
 import com.rabbitmq.client.DefaultConsumer
 import com.rabbitmq.client.Envelope
 import java.io.IOException
 
 class RiverLevelConsumer {
+
     private val QUEUE_NAME = "RIVERLEVEL"
 
     fun Consume() {
-        val factory = ConnectionFactory()
-        factory.host = "localhost"
-        val connection = factory.newConnection()
-        val channel = connection.createChannel()
+        val channel = AmqpConnection.instance.createChannel()
 
         channel.queueDeclare(QUEUE_NAME, false, false, false, null)
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C")
@@ -29,7 +27,7 @@ class RiverLevelConsumer {
                     //TODO Salvar no Bando de Dados
                     MongoDatabase.instance.save(riverLevel)
                     println(" [x] Received '$riverLevel'")
-                }catch (e : Exception){
+                } catch (e: Exception) {
                     println(e)
                 }
             }

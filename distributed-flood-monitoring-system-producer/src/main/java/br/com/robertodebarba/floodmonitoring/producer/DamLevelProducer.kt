@@ -2,15 +2,15 @@ package br.com.robertodebarba.floodmonitoring.producer
 
 import br.com.robertodebarba.floodmonitoring.core.Dam
 import br.com.robertodebarba.floodmonitoring.core.DamLevel
+import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
 import com.google.gson.Gson
-
-import com.rabbitmq.client.ConnectionFactory
-import java.time.ZonedDateTime
 import java.util.*
 
 class DamLevelProducer {
+
     private val QUEUE_NAME = "damlevel"
-    fun Produce(){
+
+    fun Produce() {
         val dam = Dam()
         println("Nome da Barragem : ")
         dam.name = readLine()
@@ -26,18 +26,15 @@ class DamLevelProducer {
         val damLevel = DamLevel()
         damLevel.dam = dam
 
-        val factory = ConnectionFactory()
-        factory.setHost("localhost")
-        val connection = factory.newConnection()
-        val channel = connection.createChannel()
+        val channel = AmqpConnection.instance.createChannel()
         damLevel.level = 35F
         val rnd = Random()
 
-        while (true){
-            var differenca : Float = rnd.nextInt(5).toFloat()
-            if(!rnd.nextBoolean()) differenca *= -1
+        while (true) {
+            var differenca: Float = rnd.nextInt(5).toFloat()
+            if (!rnd.nextBoolean()) differenca *= -1
             damLevel.level += differenca
-            if(damLevel.level < 0 ) damLevel.level = 0F
+            if (damLevel.level < 0) damLevel.level = 0F
             damLevel.time = Date()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)

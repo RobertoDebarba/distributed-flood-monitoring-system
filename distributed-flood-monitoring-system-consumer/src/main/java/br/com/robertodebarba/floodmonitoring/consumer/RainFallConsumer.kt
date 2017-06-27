@@ -1,22 +1,20 @@
 package br.com.robertodebarba.floodmonitoring.consumer
 
 import br.com.robertodebarba.floodmonitoring.core.RainFall
+import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
 import br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase
 import com.google.gson.Gson
 import com.rabbitmq.client.AMQP
-import com.rabbitmq.client.ConnectionFactory
 import com.rabbitmq.client.DefaultConsumer
 import com.rabbitmq.client.Envelope
 import java.io.IOException
 
 class RainFallConsumer {
+
     private val QUEUE_NAME = "RAINFALL"
 
     fun Consume() {
-        val factory = ConnectionFactory()
-        factory.host = "localhost"
-        val connection = factory.newConnection()
-        val channel = connection.createChannel()
+        val channel = AmqpConnection.instance.createChannel()
 
         channel.queueDeclare(QUEUE_NAME, false, false, false, null)
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C")
@@ -29,7 +27,7 @@ class RainFallConsumer {
                     //TODO Salvar no Bando de Dados
                     MongoDatabase.instance.save(rainfall)
                     println(" [x] Received '$rainfall'")
-                }catch (e : Exception){
+                } catch (e: Exception) {
                     println(e)
                 }
             }

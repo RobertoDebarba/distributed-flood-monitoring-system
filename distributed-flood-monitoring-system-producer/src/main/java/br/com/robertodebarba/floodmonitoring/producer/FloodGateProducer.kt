@@ -2,14 +2,15 @@ package br.com.robertodebarba.floodmonitoring.producer
 
 import br.com.robertodebarba.floodmonitoring.core.Dam
 import br.com.robertodebarba.floodmonitoring.core.FloodGate
+import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
 import com.google.gson.Gson
-import com.rabbitmq.client.ConnectionFactory
-import java.time.ZonedDateTime
 import java.util.*
 
 class FloodGateProducer {
+
     private val QUEUE_NAME = "FLOODGATE"
-    fun Produce(){
+
+    fun Produce() {
         val dam = Dam()
         println("Nome da Barragem : ")
         dam.name = readLine()
@@ -28,13 +29,10 @@ class FloodGateProducer {
         println("Numero da porta : ")
         flodGate.name = readLine()?.toIntOrNull() ?: 0
 
-        val factory = ConnectionFactory()
-        factory.setHost("localhost")
-        val connection = factory.newConnection()
-        val channel = connection.createChannel()
+        val channel = AmqpConnection.instance.createChannel()
 
         val rnd = Random()
-        while (true){
+        while (true) {
             flodGate.status = rnd.nextBoolean()
             flodGate.time = Date()
 

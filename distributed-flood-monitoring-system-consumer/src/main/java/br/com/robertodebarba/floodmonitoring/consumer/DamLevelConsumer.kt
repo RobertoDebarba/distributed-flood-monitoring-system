@@ -2,23 +2,21 @@ package br.com.robertodebarba.floodmonitoring.consumer
 
 import br.com.robertodebarba.floodmonitoring.core.Dam
 import br.com.robertodebarba.floodmonitoring.core.DamLevel
+import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
 import br.com.robertodebarba.floodmonitoring.core.database.MongoDatabase
 import com.google.gson.Gson
-import com.rabbitmq.client.ConnectionFactory
-import java.io.IOException
 import com.rabbitmq.client.AMQP
 import com.rabbitmq.client.DefaultConsumer
 import com.rabbitmq.client.Envelope
+import java.io.IOException
 
 
 class DamLevelConsumer {
+
     private val QUEUE_NAME = "damlevel"
 
     fun Consume() {
-        val factory = ConnectionFactory()
-        factory.host = "localhost"
-        val connection = factory.newConnection()
-        val channel = connection.createChannel()
+        val channel = AmqpConnection.instance.createChannel()
 
         channel.queueDeclare(QUEUE_NAME, false, false, false, null)
         System.out.println(" [*] Waiting for messages. To exit press CTRL+C")

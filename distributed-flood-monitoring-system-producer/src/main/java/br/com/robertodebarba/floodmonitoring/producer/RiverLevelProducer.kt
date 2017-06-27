@@ -1,13 +1,15 @@
 package br.com.robertodebarba.floodmonitoring.producer
 
 import br.com.robertodebarba.floodmonitoring.core.RiverLevel
+import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
 import com.google.gson.Gson
-import com.rabbitmq.client.ConnectionFactory
 import java.util.*
 
 class RiverLevelProducer {
+
     private val QUEUE_NAME = "RIVERLEVEL"
-    fun Produce(){
+
+    fun Produce() {
         val riverLevel = RiverLevel()
         println("Cidade : ")
         riverLevel.city = readLine()
@@ -16,18 +18,15 @@ class RiverLevelProducer {
         println("Rio : ")
         riverLevel.river = readLine()
 
-        val factory = ConnectionFactory()
-        factory.setHost("localhost")
-        val connection = factory.newConnection()
-        val channel = connection.createChannel()
+        val channel = AmqpConnection.instance.createChannel()
         riverLevel.level = 20F
 
         val rnd = Random()
-        while (true){
+        while (true) {
             var diference = rnd.nextFloat()
-            if(!rnd.nextBoolean()) diference = diference * -1
+            if (!rnd.nextBoolean()) diference *= -1
             riverLevel.level += diference
-            if(riverLevel.level < 0) riverLevel.level = 0F
+            if (riverLevel.level < 0) riverLevel.level = 0F
             riverLevel.time = Date()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
