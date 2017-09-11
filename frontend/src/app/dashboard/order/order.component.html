@@ -1,2 +1,55 @@
 <div class="animated fadeIn">
+  <div class="row">
+    <div class="page-title">Nível do Rio</div>
+  </div>
+  <!--<alert-message *ngIf="alert1.isVisible" [message]="alert1.message" [isAlert]="alert1.isAlert"-->
+  <!--(cancel)="alert1.cancel()" (confirm)="alert1.funcao()" ></alert-message>-->
+
+  <div class="row">
+    <div class="col-8">
+      <div class="card">
+        <div class="card-block">
+          <div class="chart-wrapper">
+            <canvas baseChart class="chart"
+                    [datasets]="mainChartData"
+                    [labels]="mainChartLabels"
+                    [options]="mainChartOptions"
+                    [colors]="mainChartColours"
+                    [legend]="mainChartLegend"
+                    [chartType]="mainChartType">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="card">
+        <div class="card-block">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Data/Hora</th>
+              <th>Nível do Rio</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Mark</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
