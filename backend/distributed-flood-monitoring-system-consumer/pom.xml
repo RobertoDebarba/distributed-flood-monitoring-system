@@ -19,7 +19,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>br.com.robertodebarba.floodmonitoring.consumer.Consumer</mainClass>
+							<mainClass>br.com.robertodebarba.floodmonitoring.ConsumerApplication</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>

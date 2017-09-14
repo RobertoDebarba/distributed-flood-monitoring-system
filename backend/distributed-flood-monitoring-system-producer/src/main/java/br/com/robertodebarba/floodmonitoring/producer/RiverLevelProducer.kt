@@ -1,8 +1,9 @@
 package br.com.robertodebarba.floodmonitoring.producer
 
-import br.com.robertodebarba.floodmonitoring.core.RiverLevel
 import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
+import br.com.robertodebarba.floodmonitoring.core.entity.RiverLevel
 import com.google.gson.Gson
+import java.time.LocalDateTime
 import java.util.*
 
 class RiverLevelProducer {
@@ -10,24 +11,25 @@ class RiverLevelProducer {
     private val QUEUE_NAME = "RIVERLEVEL"
 
     fun Produce() {
-        val riverLevel = RiverLevel()
         println("Cidade : ")
-        riverLevel.city = readLine()
+        val city = readLine() ?: "uninformed"
         println("Estado : ")
-        riverLevel.federationUnit = readLine()
+        val federationUnit = readLine() ?: "uninformed"
         println("Rio : ")
-        riverLevel.river = readLine()
+        val river = readLine() ?: "uninformed"
 
         val channel = AmqpConnection.instance.createChannel()
-        riverLevel.level = 20F
 
         val rnd = Random()
         while (true) {
+            val riverLevel = RiverLevel(city = city, federationUnit = federationUnit, river = river)
+            riverLevel.level = 20F
+
             var diference = rnd.nextFloat()
             if (!rnd.nextBoolean()) diference *= -1
             riverLevel.level += diference
             if (riverLevel.level < 0) riverLevel.level = 0F
-            riverLevel.time = Date()
+            riverLevel.time = LocalDateTime.now()
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
             channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(riverLevel).toByteArray())
