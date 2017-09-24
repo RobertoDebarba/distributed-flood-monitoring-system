@@ -1,0 +1,46 @@
+<div class="animated fadeIn">
+	<div class="row">
+		<div class="page-title">Nível do Rio</div>
+	</div>
+
+	<div class="row">
+		<div class="col-8">
+			<div class="card">
+				<div class="card-block">
+					<div class="chart-wrapper">
+						<canvas *ngIf="mainChartLabels" baseChart class="chart"
+								[datasets]="mainChartData"
+								[labels]="mainChartLabels"
+								[options]="mainChartOptions"
+								[colors]="mainChartColours"
+								[legend]="mainChartLegend"
+								[chartType]="mainChartType">
+						</canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4">
+			<div class="card">
+				<div class="card-block">
+					<table class="table table-striped">
+						<thead>
+						<tr>
+							<th>Hora</th>
+							<th>Nível do Rio</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr *ngFor="let riverLevel of riverLevels">
+							<th class="font-weight-normal">{{ riverLevel.time | date:'HH:mm - dd/MM/yy' }}</th>
+							<td>{{ riverLevel.level | number:'1.2-2' }} m</td>
+						</tr>
+						<tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

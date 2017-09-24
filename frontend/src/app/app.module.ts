@@ -13,35 +13,36 @@ import {AppRoutingModule} from "./app.routing";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 
 import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
-import {httpFactory} from "./intercepted-http";
+import {interceptHttpFactory, InterceptHttpService} from "./providers/http/intercept-http.service";
 
 @NgModule({
-    imports: [
-        BrowserModule,
-        HttpModule,
-        AppRoutingModule,
-        DropdownModule.forRoot(),
-        TabsModule.forRoot(),
-        ChartsModule
-    ],
-    declarations: [
-        AppComponent,
-        DashboardComponent
-    ],
-    providers: [
-        {
-            provide: LocationStrategy,
-            useClass: HashLocationStrategy
-        },
-        {
-            provide: Http,
-            useFactory: httpFactory,
-            deps: [XHRBackend, RequestOptions]
-        }
-    ],
-    bootstrap: [
-        AppComponent
-    ]
+	imports: [
+		BrowserModule,
+		HttpModule,
+		AppRoutingModule,
+		DropdownModule.forRoot(),
+		TabsModule.forRoot(),
+		ChartsModule
+	],
+	declarations: [
+		AppComponent,
+		DashboardComponent
+	],
+	providers: [
+		{
+			provide: LocationStrategy,
+			useClass: HashLocationStrategy
+		},
+		{
+			provide: Http,
+			useClass: InterceptHttpService,
+			deps: [XHRBackend, RequestOptions],
+			useFactory: interceptHttpFactory
+		},
+	],
+	bootstrap: [
+		AppComponent
+	]
 })
 export class AppModule {
 }

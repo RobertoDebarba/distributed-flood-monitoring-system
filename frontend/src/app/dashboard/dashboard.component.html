@@ -1,37 +1,21 @@
 <header class="app-header navbar navbar-toggleable-md">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
   <a class="navbar-brand" href="#"></a>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" *ngFor="let page of pages" [ngClass]="{'active': isActivePage(page)}">
-        <a class="nav-link" href="#/dashboard/{{page.route}}">{{page.title}}</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link exit" href="#" (click)="sair()">Sair <span class="fa fa-sign-out "></span></a>
-      </li>
-    </ul>
-  </div>
+  <ul class="nav navbar-nav mr-auto">
+    <li class="nav-item px-3" *ngFor="let page of pages" [ngClass]="{'active': isActivePage(page)}">
+      <a class="nav-link" href="#/dashboard/{{page.route}}">{{page.title}}</a>
+    </li>
+  </ul>
 
 </header>
 
 <div class="app-body">
-    <!-- Main content -->
-    <main class="main">
+  <!-- Main content -->
+  <main class="main">
 
-        <div class="container-fluid">
-            <router-outlet></router-outlet>
-        </div>
-        <!-- /.conainer-fluid -->
-    </main>
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- /.conainer-fluid -->
+  </main>
 </div>
-
-<footer class="app-footer">
-    <a href="#">Pizza</a> &copy; 2017
-    <span class="float-right">Powered by <a href="http://coreui.io">CoreUI</a>
-    </span>
-</footer>

@@ -1,40 +1,25 @@
 import {NgModule} from "@angular/core";
-import {Routes, RouterModule} from "@angular/router";
-import {OrderComponent} from "./order/order.component";
-import {ProductComponent} from "./product/product.component";
-import {ClientComponent} from "./client/client.component";
+import {RouterModule, Routes} from "@angular/router";
+import {RiverLevelComponent} from "./riverlevel/river-level.component";
 
 const routes: Routes = [
-  {
-    path: '',
-    redirectTo: 'order',
-    pathMatch: 'full',
-  },
-  {
-    path: 'order',
-    component: OrderComponent,
-    data: {
-      title: 'Pedidos'
-    }
-  },
-  {
-    path: 'product',
-    component: ProductComponent,
-    data: {
-      title: 'Produtos'
-    }
-  },
-  {
-    path: 'client',
-    component: ClientComponent,
-    data: {
-      title: 'Clientes'
-    }
-  }
+	{
+		path: '',
+		redirectTo: 'riverlevel',
+		pathMatch: 'full',
+	},
+	{
+		path: 'riverlevel',
+		component: RiverLevelComponent,
+		data: {
+			title: 'Nível do Rio'
+		}
+	}
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule]
 })
-export class DashboardRoutingModule {}
+export class DashboardRoutingModule {
+}
