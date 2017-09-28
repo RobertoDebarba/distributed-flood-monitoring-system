@@ -13,7 +13,8 @@ interface Page {
 export class DashboardComponent {
 
 	public pages: Page[] = [
-		{title: 'Nível do Rio', route: 'riverlevel'}
+		{title: 'Nível do Rio', route: 'riverlevel'},
+		{title: 'Chuva', route: 'rainfall'}
 	];
 
 	constructor(private router: Router) {

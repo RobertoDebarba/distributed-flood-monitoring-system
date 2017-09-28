@@ -1,31 +1,31 @@
 import {Component, OnInit} from "@angular/core";
-import {RiverLevel, RiverLevelService} from "./river-level.service";
 import {DatePipe} from "@angular/common";
+import {RainFall, RainFallService} from "./rain-fall.service";
 
 @Component({
-	templateUrl: 'river-level.component.html',
-	selector: 'river-level',
-	providers: [RiverLevelService]
+	templateUrl: 'rain-fall.component.html',
+	selector: 'rain-fall',
+	providers: [RainFallService]
 })
-export class RiverLevelComponent implements OnInit {
+export class RainFallComponent implements OnInit {
 
-	public riverLevels: RiverLevel[];
+	public rainFalls: RainFall[];
 
-	constructor(private riverLevelService: RiverLevelService,
+	constructor(private rainFallServiceService: RainFallService,
 				private datePipe: DatePipe) {
 	}
 
 	public ngOnInit(): void {
-		this.riverLevelService.getRiverLevels().subscribe((riverLevels: RiverLevel[]) => {
-			this.riverLevels = riverLevels;
+		this.rainFallServiceService.getRainFalls().subscribe((rainFalls: RainFall[]) => {
+			this.rainFalls = rainFalls;
 
-			this.mainChartData = [riverLevels.reduce((result: any, riverLevel: RiverLevel) => {
-				result.data.unshift(riverLevel.level);
+			this.mainChartData = [rainFalls.reduce((result: any, rainFall: RainFall) => {
+				result.data.unshift(rainFall.intensity);
 				return result;
 			}, {data: [], label: 'Nível do Rio'})];
 
-			this.mainChartLabels = riverLevels.map((riverLevel: RiverLevel) => {
-				return this.datePipe.transform(riverLevel.time, 'HH:mm') + " h"
+			this.mainChartLabels = rainFalls.map((rainFall: RainFall) => {
+				return this.datePipe.transform(rainFall.time, 'HH:mm') + " h"
 			}).reverse();
 		});
 	}
@@ -56,7 +56,7 @@ export class RiverLevelComponent implements OnInit {
 				ticks: {
 					beginAtZero: false,
 					callback: function (value: any) {
-						return Number((value).toFixed(2)) + " m";
+						return Number((value).toFixed(2)) + " mm";
 					}
 				}
 			}]
@@ -79,7 +79,7 @@ export class RiverLevelComponent implements OnInit {
 
 	public mainChartColours: Array<any> = [
 		{
-			backgroundColor: RiverLevelComponent.convertHex('#63c2de', 10),
+			backgroundColor: RainFallComponent.convertHex('#63c2de', 10),
 			borderColor: '#63c2de',
 			pointHoverBackgroundColor: '#fff'
 		}

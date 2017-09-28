@@ -7,6 +7,8 @@ import {RiverLevelService} from "./riverlevel/river-level.service";
 import {CommonModule, DatePipe} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {TextMaskModule} from "angular2-text-mask";
+import {RainFallService} from "./rainfall/rain-fall.service";
+import {RainFallComponent} from "./rainfall/rain-fall.component";
 
 @NgModule({
 	imports: [
@@ -18,10 +20,12 @@ import {TextMaskModule} from "angular2-text-mask";
 		ModalModule.forRoot()
 	],
 	declarations: [
-		RiverLevelComponent
+		RiverLevelComponent,
+		RainFallComponent
 	],
 	providers: [
 		RiverLevelService,
+		RainFallService,
 		DatePipe
 	]
 })

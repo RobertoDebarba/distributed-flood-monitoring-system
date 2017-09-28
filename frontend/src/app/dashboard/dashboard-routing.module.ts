@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
 import {RiverLevelComponent} from "./riverlevel/river-level.component";
+import {RainFallComponent} from "./rainfall/rain-fall.component";
 
 const routes: Routes = [
 	{
@@ -13,6 +14,13 @@ const routes: Routes = [
 		component: RiverLevelComponent,
 		data: {
 			title: 'Nível do Rio'
+		}
+	},
+	{
+		path: 'rainfall',
+		component: RainFallComponent,
+		data: {
+			title: 'Chuva'
 		}
 	}
 ];

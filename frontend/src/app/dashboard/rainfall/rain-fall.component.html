@@ -1,0 +1,46 @@
+<div class="animated fadeIn">
+	<div class="row">
+		<div class="page-title">Chuva</div>
+	</div>
+
+	<div class="row">
+		<div class="col-8">
+			<div class="card">
+				<div class="card-block">
+					<div class="chart-wrapper">
+						<canvas *ngIf="mainChartLabels" baseChart class="chart"
+								[datasets]="mainChartData"
+								[labels]="mainChartLabels"
+								[options]="mainChartOptions"
+								[colors]="mainChartColours"
+								[legend]="mainChartLegend"
+								[chartType]="mainChartType">
+						</canvas>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-4">
+			<div class="card">
+				<div class="card-block">
+					<table class="table table-striped">
+						<thead>
+						<tr>
+							<th>Hora</th>
+							<th>Índice pluviométrico</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr *ngFor="let rainFall of rainFalls">
+							<th class="font-weight-normal">{{ rainFall.time | date:'HH:mm - dd/MM/yy' }}</th>
+							<td>{{ rainFall.intensity | number:'1.2-2' }} mm</td>
+						</tr>
+						<tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
