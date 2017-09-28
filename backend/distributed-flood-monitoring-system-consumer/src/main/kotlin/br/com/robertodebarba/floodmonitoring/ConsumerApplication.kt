@@ -1,6 +1,8 @@
 package br.com.robertodebarba.floodmonitoring
 
+import br.com.robertodebarba.floodmonitoring.consumer.RainFallConsumer
 import br.com.robertodebarba.floodmonitoring.consumer.RiverLevelConsumer
+import br.com.robertodebarba.floodmonitoring.core.entity.RainFall
 import br.com.robertodebarba.floodmonitoring.core.entity.RiverLevel
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
@@ -26,10 +28,14 @@ class ConsumerApplication {
     @Autowired
     private lateinit var riverLevelConsumer: RiverLevelConsumer
 
+    @Autowired
+    private lateinit var rainFallConsumer: RainFallConsumer
+
     @PostConstruct
     fun init() {
         when (consumerType) {
             "riverlevel" -> riverLevelConsumer.consume<RiverLevel>()
+            "rainfall" -> rainFallConsumer.consume<RainFall>()
         }
 
     }
