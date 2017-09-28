@@ -33,11 +33,12 @@ class ConsumerApplication {
 
     @PostConstruct
     fun init() {
-        when (consumerType) {
-            "riverlevel" -> riverLevelConsumer.consume<RiverLevel>()
-            "rainfall" -> rainFallConsumer.consume<RainFall>()
+        consumerType.split(";").forEach {
+            when (it) {
+                "riverlevel" -> riverLevelConsumer.consume<RiverLevel>()
+                "rainfall" -> rainFallConsumer.consume<RainFall>()
+            }
         }
-
     }
 
 }
