@@ -1,0 +1,10 @@
+<div class="chart-wrapper">
+	<canvas *ngIf="mainChartLabels" baseChart class="chart"
+			[datasets]="mainChartData"
+			[labels]="mainChartLabels"
+			[options]="mainChartOptions"
+			[colors]="mainChartColours"
+			[legend]="mainChartLegend"
+			[chartType]="mainChartType">
+	</canvas>
+</div>

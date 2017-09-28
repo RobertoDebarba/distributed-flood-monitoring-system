@@ -9,6 +9,7 @@ import {FormsModule} from "@angular/forms";
 import {TextMaskModule} from "angular2-text-mask";
 import {RainFallService} from "./rainfall/rain-fall.service";
 import {RainFallComponent} from "./rainfall/rain-fall.component";
+import {LevelChartComponent} from "./shared/level-chart/level-chart.component";
 
 @NgModule({
 	imports: [
@@ -21,7 +22,8 @@ import {RainFallComponent} from "./rainfall/rain-fall.component";
 	],
 	declarations: [
 		RiverLevelComponent,
-		RainFallComponent
+		RainFallComponent,
+		LevelChartComponent
 	],
 	providers: [
 		RiverLevelService,

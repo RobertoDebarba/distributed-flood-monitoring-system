@@ -7,16 +7,10 @@
 		<div class="col-8">
 			<div class="card">
 				<div class="card-block">
-					<div class="chart-wrapper">
-						<canvas *ngIf="mainChartLabels" baseChart class="chart"
-								[datasets]="mainChartData"
-								[labels]="mainChartLabels"
-								[options]="mainChartOptions"
-								[colors]="mainChartColours"
-								[legend]="mainChartLegend"
-								[chartType]="mainChartType">
-						</canvas>
-					</div>
+					<level-chart [mainChartData]="mainChartData"
+								 [mainChartLabels]="mainChartLabels"
+								 [yAxisUnit]="'m'">
+					</level-chart>
 				</div>
 			</div>
 		</div>
