@@ -1,5 +1,10 @@
 <header class="app-header navbar navbar-toggleable-md">
-	<a class="navbar-brand" href="#"></a>
+	<!--<a class="navbar-brand" href="#">CLIMA ALERTA</a>-->
+	<ul class="nav navbar-nav">
+		<li class="nav-item px-3">
+			<span class="logo"><i class="fa fa-leaf"></i> Clima Alerta</span>
+		</li>
+	</ul>
 
 	<ul class="nav navbar-nav mr-auto">
 		<li class="nav-item px-3" *ngFor="let page of pages" [ngClass]="{'active': isActivePage(page)}">
