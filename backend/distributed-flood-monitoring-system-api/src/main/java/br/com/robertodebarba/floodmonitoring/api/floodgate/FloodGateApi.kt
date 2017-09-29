@@ -34,7 +34,7 @@
 //                        .asList(findOptions)
 //                return Response.ok().entity(floodgates).build()
 //            } else {
-//                return Response.status(Response.Status.BAD_REQUEST).build()
+//                return Response.status(Response.RiverStatus.BAD_REQUEST).build()
 //            }
 //
 //        } catch (e: Exception) {

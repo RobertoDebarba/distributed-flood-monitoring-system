@@ -26,7 +26,7 @@ class RiverLevelService {
                 repository.findByRiverAndCityAndFederationUnitOrderByTimeDesc(river, city, federationUnit, pageable)
             }
 
-    fun dto(producer: () -> Page<RiverLevel>): Page<RiverLevelDTO> =
+    private fun dto(producer: () -> Page<RiverLevel>): Page<RiverLevelDTO> =
             producer().map { mapper.toDTO(it) }
 
 }

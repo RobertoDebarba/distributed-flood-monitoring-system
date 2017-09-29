@@ -26,7 +26,7 @@ class RainFallService {
                 repository.findByStationNameAndCityAndFederationUnitOrderByTimeDesc(stationName, city, federationUnit, pageable)
             }
 
-    fun dto(producer: () -> Page<RainFall>): Page<RainFallDTO> =
+    private fun dto(producer: () -> Page<RainFall>): Page<RainFallDTO> =
             producer().map { mapper.toDTO(it) }
 
 }

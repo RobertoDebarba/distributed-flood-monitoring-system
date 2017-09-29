@@ -15,4 +15,5 @@ interface RainFallRepository : MongoRepository<RainFall, String>, PagingAndSorti
 
     fun findByStationNameAndCityAndFederationUnitOrderByTimeDesc(stationName: String, city: String, federationUnit: String, pageable: Pageable): Page<RainFall>
 
+    fun findFirst1ByOrderByTimeDesc(): RainFall
 }
