@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {Initial, InitialService} from "./initial.service";
 import {DatePipe} from "@angular/common";
-import {Router} from "@angular/router";
 
 @Component({
 	templateUrl: 'initial.component.html',
@@ -14,14 +13,15 @@ export class InitialComponent implements OnInit {
 	public riverLevel: number;
 	public rainIntensity: string;
 	public riverStatus: string;
+
 	public mainChartData: Array<any>;
 	public mainChartLabels: Array<any>;
+
 	public rainIntensityCardClass: string;
 	public riverStatusCardClass: string;
 
 	constructor(private rainFallServiceService: InitialService,
-				private datePipe: DatePipe,
-				private router: Router) {
+				private datePipe: DatePipe) {
 	}
 
 	public ngOnInit(): void {
@@ -61,7 +61,7 @@ export class InitialComponent implements OnInit {
 				break;
 			case "HEAVY":
 				this.rainIntensity = "Forte";
-				this.rainIntensityCardClass = "bg-danger";
+				this.rainIntensityCardClass = "bg-alert";
 				break;
 			case "VERY_STRONG":
 				this.rainIntensity = "Muito forte";
@@ -82,7 +82,7 @@ export class InitialComponent implements OnInit {
 				break;
 			case "ALERT":
 				this.riverStatus = "Alerta";
-				this.riverStatusCardClass = "bg-danger";
+				this.riverStatusCardClass = "bg-alert";
 				break;
 			case "READINESS":
 				this.riverStatus = "Prontidão";
@@ -93,7 +93,7 @@ export class InitialComponent implements OnInit {
 
 	public getRiverLevelFixed(): string {
 		if (this.riverLevel)
-			return this.riverLevel.toFixed(2);
+			return `${this.riverLevel.toFixed(2)} m`;
 	}
 
 }

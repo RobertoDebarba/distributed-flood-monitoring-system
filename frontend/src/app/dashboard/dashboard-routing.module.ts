@@ -11,16 +11,7 @@ const routes: Routes = [
 		data: {
 			title: 'Início'
 		}
-		//redirectTo: 'initial',
-		//pathMatch: 'full'
 	},
-	//{
-	//	path: 'initial',
-	//	component: InitialComponent,
-	//	data: {
-	//		title: 'Início'
-	//	}
-	//},
 	{
 		path: 'riverlevel',
 		component: RiverLevelComponent,
