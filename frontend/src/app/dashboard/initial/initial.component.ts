@@ -1,7 +1,7 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, ElementRef, OnInit} from "@angular/core";
 import {Initial, InitialService} from "./initial.service";
 import {DatePipe} from "@angular/common";
-import "../../../assets/js/launch.js";
+import {Router} from "@angular/router";
 
 @Component({
 	templateUrl: 'initial.component.html',
@@ -22,7 +22,12 @@ export class InitialComponent implements OnInit {
 	public riverStatusCardClass: string;
 
 	constructor(private rainFallServiceService: InitialService,
-				private datePipe: DatePipe) {
+				private datePipe: DatePipe,
+				private el: ElementRef,
+				private router: Router) {
+		let tag = document.createElement("script");
+		tag.src = "../../../assets/js/launch.js";
+		this.el.nativeElement.appendChild(tag);
 	}
 
 	public ngOnInit(): void {
@@ -45,9 +50,11 @@ export class InitialComponent implements OnInit {
 	}
 
 	public redirectToRiverLevel(): void {
+		this.router.navigate(["./dashboard/riverlevel"]);
 	}
 
 	public redirectToRainFall(): void {
+		this.router.navigate(["./dashboard/rainfall"]);
 	}
 
 	private verifyRainIntensity(): void {
