@@ -7,6 +7,7 @@ import br.com.robertodebarba.floodmonitoring.core.entity.RiverLevel
 import br.com.robertodebarba.floodmonitoring.core.entity.RiverLevelRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+import java.time.LocalDateTime
 
 @Service
 class DashboardService {
@@ -31,11 +32,15 @@ class DashboardService {
         val riverStatus = riverStatus {
             riverLevel
         }
+        val levelsHistoric = riverLevelRepository.findFirst10ByOrderByTimeDesc()
         val riverLevelHistoric = levels {
-            riverLevelRepository.findFirst10ByOrderByTimeDesc()
+            levelsHistoric
+        }
+        val riverLevelHistoricTimes = times{
+            levelsHistoric
         }
 
-        return DashboardDTO(riverLevel.level, rainIntensity, riverStatus, riverLevelHistoric)
+        return DashboardDTO(riverLevel.level, rainIntensity, riverStatus, riverLevelHistoric, riverLevelHistoricTimes)
     }
 
     private fun rainIntensity(block: () -> RainFall) = dashboardMapper.toRainIntensity(block())
@@ -44,4 +49,7 @@ class DashboardService {
 
     private fun levels(producer: () -> List<RiverLevel>): List<Float> =
             producer().map { riverLevelMapper.toDTO(it).level }
+
+    private fun times(producer: () -> List<RiverLevel>): List<LocalDateTime> =
+            producer().map { riverLevelMapper.toDTO(it).time }
 }

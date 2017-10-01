@@ -10,6 +10,8 @@ import {TextMaskModule} from "angular2-text-mask";
 import {RainFallService} from "./rainfall/rain-fall.service";
 import {RainFallComponent} from "./rainfall/rain-fall.component";
 import {LevelChartComponent} from "./shared/level-chart/level-chart.component";
+import {InitialComponent} from "./initial/initial.component";
+import {InitialService} from "./initial/initial.service";
 
 @NgModule({
 	imports: [
@@ -23,11 +25,13 @@ import {LevelChartComponent} from "./shared/level-chart/level-chart.component";
 	declarations: [
 		RiverLevelComponent,
 		RainFallComponent,
+		InitialComponent,
 		LevelChartComponent
 	],
 	providers: [
 		RiverLevelService,
 		RainFallService,
+		InitialService,
 		DatePipe
 	]
 })

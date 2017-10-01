@@ -13,6 +13,7 @@ interface Page {
 export class DashboardComponent {
 
 	public pages: Page[] = [
+		{title: 'Início', route: ''},
 		{title: 'Nível do Rio', route: 'riverlevel'},
 		{title: 'Chuva', route: 'rainfall'}
 	];
