@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Initial, InitialService} from "./initial.service";
 import {DatePipe} from "@angular/common";
+import "../../../assets/js/launch.js";
 
 @Component({
 	templateUrl: 'initial.component.html',
