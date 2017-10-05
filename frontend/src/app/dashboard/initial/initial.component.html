@@ -6,32 +6,36 @@
 
 	<div class="row">
 		<div class="col-sm-4">
-			<div class="card text-white" [ngClass]="riverStatusCardClass">
-				<div class="card-body pb-0">
-					<h1 class="mb-0">{{this.getRiverLevelFixed()}}</h1>
-					<div class="btn-group float-right">
-						<button class="btn btn-transparent p-0" type="button"
-								aria-haspopup="true" aria-expanded="false" (click)="redirectToRiverLevel()">
-							<i class="icon-arrow-right"></i>
-						</button>
+			<a href="#/dashboard/riverlevel" style="text-decoration:none">
+				<div class="card text-white" [ngClass]="riverStatusCardClass">
+					<div class="card-body pb-0">
+						<h1 class="mb-0">{{this.getRiverLevelFixed()}}</h1>
+						<div class="btn-group float-right">
+							<div class="btn btn-transparent p-0"
+									aria-haspopup="true" aria-expanded="false">
+								<i class="icon-arrow-right"></i>
+							</div>
+						</div>
+						<p>NÍVEL DO RIO</p>
 					</div>
-					<p>NÍVEL DO RIO</p>
 				</div>
-			</div>
+			</a>
 		</div>
 		<div class="col-sm-4">
-			<div class="card text-white" [ngClass]="rainIntensityCardClass">
-				<div class="card-body pb-0">
-					<h1 class="mb-0">{{rainIntensity}}</h1>
-					<div class="btn-group float-right">
-						<button class="btn btn-transparent p-0" type="button"
-								aria-haspopup="true" aria-expanded="false" (click)="redirectToRainFall()">
-							<i class="icon-arrow-right"></i>
-						</button>
+			<a href="#/dashboard/rainfall" style="text-decoration:none">
+				<div class="card text-white" [ngClass]="rainIntensityCardClass">
+					<div class="card-body pb-0">
+						<h1 class="mb-0">{{rainIntensity}}</h1>
+						<div class="btn-group float-right">
+							<div class="btn btn-transparent p-0"
+									aria-haspopup="true" aria-expanded="false">
+								<i class="icon-arrow-right"></i>
+							</div>
+						</div>
+						<p>CHUVA</p>
 					</div>
-					<p>CHUVA</p>
 				</div>
-			</div>
+			</a>
 		</div>
 		<div class="col-sm-4">
 			<div class="card text-white" [ngClass]="riverStatusCardClass">

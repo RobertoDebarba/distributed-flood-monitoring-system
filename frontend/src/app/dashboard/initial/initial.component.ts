@@ -49,14 +49,6 @@ export class InitialComponent implements OnInit {
 		});
 	}
 
-	public redirectToRiverLevel(): void {
-		this.router.navigate(["./dashboard/riverlevel"]);
-	}
-
-	public redirectToRainFall(): void {
-		this.router.navigate(["./dashboard/rainfall"]);
-	}
-
 	private verifyRainIntensity(): void {
 		switch (this.rainIntensity) {
 			case "NORMAL":
