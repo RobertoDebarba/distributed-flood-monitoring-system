@@ -26,7 +26,7 @@ export class InitialComponent implements OnInit {
 				private el: ElementRef,
 				private router: Router) {
 		let tag = document.createElement("script");
-		tag.src = "../../../assets/js/launch.js";
+		tag.src = "../../../assets/js/weather-widget.js";
 		this.el.nativeElement.appendChild(tag);
 	}
 
