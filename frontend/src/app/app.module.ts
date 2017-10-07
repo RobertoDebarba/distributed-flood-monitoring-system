@@ -8,12 +8,11 @@ import {TabsModule} from "ng2-bootstrap/tabs";
 
 import {ChartsModule} from "ng2-charts/ng2-charts";
 
-import {AppRoutingModule} from "./app.routing";
-
-import {DashboardComponent} from "./dashboard/dashboard.component";
+import {AppRoutingModule} from "./app-routing.module";
 
 import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {interceptHttpFactory, InterceptHttpService} from "./providers/http/intercept-http.service";
+import {DashboardModule} from "./dashboard/dashboard.module";
 
 @NgModule({
 	imports: [
@@ -22,11 +21,11 @@ import {interceptHttpFactory, InterceptHttpService} from "./providers/http/inter
 		AppRoutingModule,
 		DropdownModule.forRoot(),
 		TabsModule.forRoot(),
-		ChartsModule
+		ChartsModule,
+		DashboardModule
 	],
 	declarations: [
-		AppComponent,
-		DashboardComponent
+		AppComponent
 	],
 	providers: [
 		{

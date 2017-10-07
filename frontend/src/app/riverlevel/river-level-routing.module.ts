@@ -1,12 +1,12 @@
 import {NgModule} from "@angular/core";
 import {RouterModule} from "@angular/router";
-import {DashboardComponent} from "./dashboard.component";
+import {RiverLevelComponent} from "./river-level.component";
 
 @NgModule({
 	imports: [RouterModule.forChild([
-		{ path: 'dashboard', component: DashboardComponent }
+		{ path: '', component: RiverLevelComponent }
 	])],
 	exports: [RouterModule]
 })
 
-export class InitialRoutingModule {}
+export class RiverLevelRoutingModule {}

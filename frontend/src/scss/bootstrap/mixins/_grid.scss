@@ -31,7 +31,7 @@
   position: relative;
   // Prevent columns from becoming too narrow when at smaller grid tiers by
   // always setting `width: 100%;`. This works because we use `flex` values
-  // later on to override this initial width.
+  // later on to override this dashboard width.
   width: 100%;
   min-height: 1px; // Prevent collapsing
   padding-right: ($grid-gutter-width / 2);

@@ -1,6 +1,5 @@
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
-import {DashboardComponent} from "./dashboard/dashboard.component";
 
 export const routes: Routes = [
 	{
@@ -9,17 +8,12 @@ export const routes: Routes = [
 		pathMatch: 'full',
 	},
 	{
-		path: '',
-		component: DashboardComponent,
-		data: {
-			title: 'Início'
-		},
-		children: [
-			{
-				path: 'dashboard',
-				loadChildren: './dashboard/dashboard.module#DashboardModule'
-			},
-		]
+		path: 'riverlevel',
+		loadChildren: 'app/riverlevel/river-level.module#RiverLevelModule'
+	},
+	{
+		path: 'rainfall',
+		loadChildren: 'app/rainfall/rain-fall.module#RainFallModule'
 	}
 ];
 

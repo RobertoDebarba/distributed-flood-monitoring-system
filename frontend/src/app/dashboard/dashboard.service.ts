@@ -2,10 +2,10 @@ import {Response} from "express";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs/Rx";
 import {Http} from "@angular/http";
-import {environment} from "../../../environments/environment";
+import {environment} from "../../environments/environment";
 import "rxjs/add/operator/map";
 
-export interface Initial {
+export interface Dashboard {
 	riverLevel: number,
 	rainIntensity: string,
 	riverStatus: string,
@@ -14,12 +14,12 @@ export interface Initial {
 }
 
 @Injectable()
-export class InitialService {
+export class DashboardService {
 
 	constructor(private http: Http) {
 	}
 
-	public getInitial(): Observable<Initial> {
+	public getDashboard(): Observable<Dashboard> {
 		return this.http.get(environment.api + 'dashboard')
 			.map((res: Response) => res.json());
 	}
