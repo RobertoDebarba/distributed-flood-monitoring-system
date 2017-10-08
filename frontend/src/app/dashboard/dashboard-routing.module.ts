@@ -9,4 +9,4 @@ import {DashboardComponent} from "./dashboard.component";
 	exports: [RouterModule]
 })
 
-export class InitialRoutingModule {}
+export class DashboardRoutingModule {}

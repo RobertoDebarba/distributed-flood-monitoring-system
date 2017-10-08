@@ -13,7 +13,7 @@ interface Page {
 export class AppComponent {
 
 	public pages: Page[] = [
-		{title: 'Início', route: ''},
+		{title: 'Início', route: 'dashboard'},
 		{title: 'Nível do Rio', route: 'riverlevel'},
 		{title: 'Chuva', route: 'rainfall'}
 	];

@@ -17,10 +17,7 @@ export class DashboardComponent implements OnInit {
 	public mainChartData: Array<any>;
 	public mainChartLabels: Array<any>;
 
-	public rainIntensityCardClass: string;
-	public riverStatusCardClass: string;
-
-	constructor(private rainFallServiceService: DashboardService,
+	constructor(private dashboardService: DashboardService,
 				private datePipe: DatePipe,
 				private el: ElementRef) {
 		let tag = document.createElement("script");
@@ -29,7 +26,7 @@ export class DashboardComponent implements OnInit {
 	}
 
 	public ngOnInit(): void {
-		this.rainFallServiceService.getDashboard().subscribe((dashboard: Dashboard) => {
+		this.dashboardService.getDashboard().subscribe((dashboard: Dashboard) => {
 			this.dashboard = dashboard;
 			this.riverLevel = dashboard.riverLevel;
 			this.rainIntensity = dashboard.rainIntensity;
@@ -41,52 +38,7 @@ export class DashboardComponent implements OnInit {
 			this.mainChartLabels = dashboard.riverLevelHistoricTime.map((time: Date) => {
 				return this.datePipe.transform(time, 'HH:mm') + " h"
 			}).reverse();
-
-			this.verifyRainIntensity();
-			this.verifyRiverStatus();
 		});
-	}
-
-	private verifyRainIntensity(): void {
-		switch (this.rainIntensity) {
-			case "NORMAL":
-				this.rainIntensity = "Normal";
-				this.rainIntensityCardClass = "bg-success";
-				break;
-			case "MODERATE":
-				this.rainIntensity = "Moderada";
-				this.rainIntensityCardClass = "bg-warning";
-				break;
-			case "HEAVY":
-				this.rainIntensity = "Forte";
-				this.rainIntensityCardClass = "bg-alert";
-				break;
-			case "VERY_STRONG":
-				this.rainIntensity = "Muito forte";
-				this.rainIntensityCardClass = "bg-danger";
-				break;
-		}
-	}
-
-	private verifyRiverStatus(): void {
-		switch (this.riverStatus) {
-			case "NORMAL":
-				this.riverStatus = "Normal";
-				this.riverStatusCardClass = "bg-success";
-				break;
-			case "ATTENTION":
-				this.riverStatus = "Atenção";
-				this.riverStatusCardClass = "bg-warning";
-				break;
-			case "ALERT":
-				this.riverStatus = "Alerta";
-				this.riverStatusCardClass = "bg-alert";
-				break;
-			case "READINESS":
-				this.riverStatus = "Prontidão";
-				this.riverStatusCardClass = "bg-danger";
-				break;
-		}
 	}
 
 	public getRiverLevelFixed(): string {

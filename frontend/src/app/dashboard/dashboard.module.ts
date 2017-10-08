@@ -2,16 +2,20 @@ import {NgModule} from "@angular/core";
 import {DatePipe} from "@angular/common";
 import {DashboardComponent} from "./dashboard.component";
 import {DashboardService} from "./dashboard.service";
-import {InitialRoutingModule} from "./dashboard-routing.module";
+import {DashboardRoutingModule} from "./dashboard-routing.module";
 import {SharedModule} from "../shared/shared.module";
+import {RiverStatusPipe} from "../pipes/river-status.pipe";
+import {RainIntensityPipe} from "../pipes/rain-intensity.pipe";
 
 @NgModule({
 	imports: [
-		InitialRoutingModule,
+		DashboardRoutingModule,
 		SharedModule
 	],
 	declarations: [
-		DashboardComponent
+		DashboardComponent,
+		RiverStatusPipe,
+		RainIntensityPipe
 	],
 	providers: [
 		DashboardService,

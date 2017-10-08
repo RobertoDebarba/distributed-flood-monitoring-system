@@ -13,12 +13,12 @@ export class RainFallComponent implements OnInit {
 	public mainChartData: Array<any>;
 	public mainChartLabels: Array<any>;
 
-	constructor(private rainFallServiceService: RainFallService,
+	constructor(private rainFallService: RainFallService,
 				private datePipe: DatePipe) {
 	}
 
 	public ngOnInit(): void {
-		this.rainFallServiceService.getRainFalls().subscribe((rainFalls: RainFall[]) => {
+		this.rainFallService.getRainFalls().subscribe((rainFalls: RainFall[]) => {
 			this.rainFalls = rainFalls;
 
 			this.mainChartData = [rainFalls.reduce((result: any, rainFall: RainFall) => {
