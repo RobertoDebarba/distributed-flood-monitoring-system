@@ -1,6 +1,7 @@
 package br.com.robertodebarba.floodmonitoring.producer
 
 import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
+import br.com.robertodebarba.floodmonitoring.core.amqp.QueueName
 import br.com.robertodebarba.floodmonitoring.core.entity.RainFall
 import com.google.gson.Gson
 import java.time.LocalDateTime
@@ -8,7 +9,7 @@ import java.util.*
 
 class RainFallProducer {
 
-    private val QUEUE_NAME = "RAINFALL"
+    private val QUEUE_NAME = QueueName.RAIN_FALL.name
 
     fun Produce() {
         println("Cidade : ")

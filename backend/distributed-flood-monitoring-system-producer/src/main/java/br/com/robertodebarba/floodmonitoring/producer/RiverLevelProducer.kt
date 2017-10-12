@@ -1,6 +1,7 @@
 package br.com.robertodebarba.floodmonitoring.producer
 
 import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
+import br.com.robertodebarba.floodmonitoring.core.amqp.QueueName
 import br.com.robertodebarba.floodmonitoring.core.entity.RiverLevel
 import com.google.gson.Gson
 import java.time.LocalDateTime
@@ -8,7 +9,7 @@ import java.util.*
 
 class RiverLevelProducer {
 
-    private val QUEUE_NAME = "RIVERLEVEL"
+    private val QUEUE_NAME = QueueName.RIVER_LEVEL.name
 
     fun Produce() {
         println("Cidade : ")
