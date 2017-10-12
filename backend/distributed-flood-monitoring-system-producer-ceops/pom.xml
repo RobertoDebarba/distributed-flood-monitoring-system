@@ -12,6 +12,10 @@
 
     <artifactId>distributed-flood-monitoring-system-producer-ceops</artifactId>
 
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+    </build>
+
     <repositories>
         <repository>
             <id>jcenter</id>

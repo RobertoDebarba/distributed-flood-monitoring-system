@@ -12,6 +12,10 @@
 
     <artifactId>distributed-flood-monitoring-system-api</artifactId>
 
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+    </build>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

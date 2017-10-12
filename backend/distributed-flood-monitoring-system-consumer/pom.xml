@@ -13,6 +13,8 @@
     <artifactId>distributed-flood-monitoring-system-consumer</artifactId>
 
     <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+
 		<plugins>
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
