@@ -14,6 +14,10 @@ export const routes: Routes = [
 	{
 		path: 'rainfall',
 		loadChildren: 'app/rainfall/rain-fall.module#RainFallModule'
+	},
+	{
+		path: 'flood',
+		loadChildren: 'app/flood/flood.module#FloodModule'
 	}
 ];
 

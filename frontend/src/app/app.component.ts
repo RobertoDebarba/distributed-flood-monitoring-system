@@ -15,7 +15,8 @@ export class AppComponent {
 	public pages: Page[] = [
 		{title: 'Início', route: 'dashboard'},
 		{title: 'Nível do Rio', route: 'riverlevel'},
-		{title: 'Chuva', route: 'rainfall'}
+		{title: 'Chuva', route: 'rainfall'},
+		{title: 'Enchentes', route: 'flood'}
 	];
 
 	constructor(private router: Router) {

@@ -1,0 +1,29 @@
+<div class="animated fadeIn">
+	<div class="row">
+		<div class="page-title">Enchentes</div>
+	</div>
+
+	<div class="row">
+		<div class="col-8">
+			<div class="card">
+				<div class="card-block">
+					<table class="table table-striped">
+						<thead>
+						<tr>
+							<th>Ano</th>
+							<th>Nível Mais Alto do Rio</th>
+						</tr>
+						</thead>
+						<tbody>
+						<tr *ngFor="let flood of floods">
+							<th class="font-weight-normal">{{ flood.year}}</th>
+							<td>{{ flood.level | number:'1.2-2' }} m</td>
+						</tr>
+						<tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
