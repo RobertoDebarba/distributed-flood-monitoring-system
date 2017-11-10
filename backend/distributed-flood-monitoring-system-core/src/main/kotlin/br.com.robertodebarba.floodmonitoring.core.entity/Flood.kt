@@ -8,9 +8,9 @@ import java.util.*
 import javax.annotation.Generated
 
 @Document
-@CompoundIndex(name = "flood", def = "{'year':2000, 'level':22.5}")
+@CompoundIndex(name = "flood", def = "{'year':1, 'level':1}")
 data class Flood (
         @Generated @Id var id: String = UUID.randomUUID().toString(),
-        var year: Int = LocalDateTime.now().year,
-        var level: Float = 0F
+        var year: Int,
+        var level: Float
 )
