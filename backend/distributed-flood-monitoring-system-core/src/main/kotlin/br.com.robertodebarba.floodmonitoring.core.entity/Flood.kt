@@ -12,5 +12,8 @@ import javax.annotation.Generated
 data class Flood (
         @Generated @Id var id: String = UUID.randomUUID().toString(),
         var year: Int,
-        var level: Float
+        var date: LocalDateTime,
+        var level: Float,
+        var city: String = "uninformed",
+        var federationUnit: String = "uninformed"
 )

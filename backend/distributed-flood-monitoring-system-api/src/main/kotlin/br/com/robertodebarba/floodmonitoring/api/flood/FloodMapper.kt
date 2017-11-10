@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component
 class FloodMapper {
 
     fun toDTO(entity: Flood) =
-            FloodDTO(entity.year, entity.level)
+            FloodDTO(entity.year, entity.date, entity.level, entity.city, entity.federationUnit)
 
 }
