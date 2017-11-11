@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 
 @Service
-class CeopsConsumer {
+class CeopsFloodStatusConsumer {
 
     private val logger = LoggerFactory.getLogger(this.javaClass)!!
 

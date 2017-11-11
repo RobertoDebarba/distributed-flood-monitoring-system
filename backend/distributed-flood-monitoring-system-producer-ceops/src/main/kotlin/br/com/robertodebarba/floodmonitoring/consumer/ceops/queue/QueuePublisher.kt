@@ -3,6 +3,8 @@ package br.com.robertodebarba.floodmonitoring.consumer.ceops.queue
 import br.com.robertodebarba.floodmonitoring.core.amqp.AmqpConnection
 import br.com.robertodebarba.floodmonitoring.core.amqp.QueueName.RAIN_FALL
 import br.com.robertodebarba.floodmonitoring.core.amqp.QueueName.RIVER_LEVEL
+import br.com.robertodebarba.floodmonitoring.core.amqp.QueueName.FLOOD
+import br.com.robertodebarba.floodmonitoring.core.entity.Flood
 import br.com.robertodebarba.floodmonitoring.core.entity.RainFall
 import br.com.robertodebarba.floodmonitoring.core.entity.RiverLevel
 import com.google.gson.Gson
@@ -36,5 +38,7 @@ class QueuePublisherBean {
     @Bean
     fun rainFallQueuePublisher() = QueuePublisher<RainFall>(RAIN_FALL.name)
 
+    @Bean
+    fun floodQueuePublisher() = QueuePublisher<Flood>(FLOOD.name)
 }
 
