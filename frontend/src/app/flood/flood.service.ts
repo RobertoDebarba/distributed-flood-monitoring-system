@@ -7,7 +7,10 @@ import "rxjs/add/operator/map";
 
 export interface Flood {
 	year: number,
-	level: number
+	date: Date,
+	level: number,
+	city: string,
+	federationUnit: string
 }
 
 @Injectable()

@@ -3,6 +3,7 @@ package br.com.robertodebarba.floodmonitoring.core.entity
 import org.mongodb.morphia.annotations.Id
 import org.springframework.data.mongodb.core.index.CompoundIndex
 import org.springframework.data.mongodb.core.mapping.Document
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.util.*
 import javax.annotation.Generated
@@ -12,7 +13,7 @@ import javax.annotation.Generated
 data class Flood (
         @Generated @Id var id: String = UUID.randomUUID().toString(),
         var year: Int,
-        var date: LocalDateTime,
+        var date: LocalDate,
         var level: Float,
         var city: String = "uninformed",
         var federationUnit: String = "uninformed"

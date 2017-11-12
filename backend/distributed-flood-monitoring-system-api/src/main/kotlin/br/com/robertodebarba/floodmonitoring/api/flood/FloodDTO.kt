@@ -1,9 +1,9 @@
 package br.com.robertodebarba.floodmonitoring.api.flood
 
-import java.time.LocalDateTime
+import java.time.LocalDate
 
 class FloodDTO(var year: Int,
-        var date: LocalDateTime,
-        var level: Float,
-        var city: String ,
-        var federationUnit: String )
+               var date: LocalDate,
+               var level: Float,
+               var city: String,
+               var federationUnit: String )

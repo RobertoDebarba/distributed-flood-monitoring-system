@@ -10,13 +10,19 @@
 					<table class="table table-striped">
 						<thead>
 						<tr>
+							<th>Estado</th>
+							<th>Cidade</th>
 							<th>Ano</th>
+							<th>Data da Medição</th>
 							<th>Nível Mais Alto do Rio</th>
 						</tr>
 						</thead>
 						<tbody>
 						<tr *ngFor="let flood of floods">
-							<th class="font-weight-normal">{{ flood.year}}</th>
+							<td>{{ flood.federationUnit}}</td>
+							<td>{{ flood.city}}</td>
+							<td>{{ flood.year}}</td>
+							<td>{{ flood.date | date:'dd/MM/yy' }}</td>
 							<td>{{ flood.level | number:'1.2-2' }} m</td>
 						</tr>
 						<tr>

@@ -5,6 +5,7 @@ object Producer {
     val FLOODGATE = 2
     val RAINFALL = 3
     val RIVERLEVEL = 4
+    val FLOOD = 5
 
     @JvmStatic
     fun main(args: Array<String>) {
@@ -13,6 +14,7 @@ object Producer {
 //        println("2 - Comporta ")
         println("3 - Estação de chuva ")
         println("4 - Nivel do rio ")
+        println("5 - Enchentes ")
         println("Tipo de Produtor:")
 
         val tipo = readLine()?.toInt() ?: 1
@@ -21,5 +23,6 @@ object Producer {
 //        if(tipo == FLOODGATE) FloodGateProducer().Produce()
         if (tipo == RAINFALL) RainFallProducer().Produce()
         if (tipo == RIVERLEVEL) RiverLevelProducer().Produce()
+        if (tipo == FLOOD) FloodProducer().Produce()
     }
 }
