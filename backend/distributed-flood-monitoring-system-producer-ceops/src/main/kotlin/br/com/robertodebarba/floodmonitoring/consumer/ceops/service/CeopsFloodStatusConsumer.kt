@@ -1,10 +1,10 @@
 package br.com.robertodebarba.floodmonitoring.consumer.ceops.service
 
-import br.com.robertodebarba.floodmonitoring.consumer.ceops.service.CeopsApi.BLUMENAU
 import br.com.robertodebarba.floodmonitoring.consumer.ceops.model.CeopsRecord
 import br.com.robertodebarba.floodmonitoring.consumer.ceops.model.RainFallMapper
 import br.com.robertodebarba.floodmonitoring.consumer.ceops.model.RiverLevelMapper
 import br.com.robertodebarba.floodmonitoring.consumer.ceops.queue.QueuePublisher
+import br.com.robertodebarba.floodmonitoring.consumer.ceops.service.CeopsApi.BLUMENAU
 import br.com.robertodebarba.floodmonitoring.core.entity.RainFall
 import br.com.robertodebarba.floodmonitoring.core.entity.RiverLevel
 import com.github.kittinunf.fuel.httpGet
@@ -43,8 +43,6 @@ class CeopsFloodStatusConsumer {
             }
 
             logger.info("Request ${BLUMENAU.url}: 200 OK")
-
-            TODO("filtrar dados já inseridos")
 
             ceopsRecords?.
                     map { riverLevelMapper.toEntity(it) }?.
