@@ -32,7 +32,7 @@ class DashboardService {
         val riverStatus = riverStatus {
             riverLevel
         }
-        val levelsHistoric = riverLevelRepository.findFirst10ByOrderByTimeDesc()
+        val levelsHistoric = riverLevelRepository.findFirst20ByOrderByTimeDesc()
         val riverLevelHistoric = levels {
             levelsHistoric
         }
