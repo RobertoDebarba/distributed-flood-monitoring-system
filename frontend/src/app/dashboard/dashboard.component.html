@@ -7,7 +7,7 @@
 	<div class="row">
 		<div class="col-sm-4">
 			<a href="#/riverlevel" style="text-decoration:none">
-				<div class="card text-white" [ngClass]="{'NORMAL': 'bg-success', 'ATTENTION': 'bg-warning', 'ALERT': 'bg-alert', 'READINESS': 'bg-danger'}[riverStatus]">
+				<div class="card text-white status-tile" [ngClass]="{'NORMAL': 'bg-success', 'ATTENTION': 'bg-warning', 'ALERT': 'bg-alert', 'READINESS': 'bg-danger'}[riverStatus]">
 					<div class="card-body pb-0">
 						<h1 class="mb-0">{{this.getRiverLevelFixed()}}</h1>
 						<div class="btn-group float-right">
@@ -23,7 +23,7 @@
 		</div>
 		<div class="col-sm-4">
 			<a href="#/rainfall" style="text-decoration:none">
-				<div class="card text-white" [ngClass]="{'LIGHT': 'bg-success', 'MODERATE': 'bg-warning', 'HEAVY': 'bg-alert', 'VERY_STRONG' : 'bg-danger'}[rainIntensity]">
+				<div class="card text-white status-tile" [ngClass]="{'LIGHT': 'bg-success', 'MODERATE': 'bg-warning', 'HEAVY': 'bg-alert', 'VERY_STRONG' : 'bg-danger'}[rainIntensity]">
 					<div class="card-body pb-0">
 						<h1 class="mb-0">{{rainIntensity | rainIntensity: rainIntensity}}</h1>
 						<div class="btn-group float-right">
@@ -38,7 +38,7 @@
 			</a>
 		</div>
 		<div class="col-sm-4">
-			<div class="card text-white" [ngClass]="{'NORMAL': 'bg-success', 'ATTENTION': 'bg-warning', 'ALERT': 'bg-alert', 'READINESS': 'bg-danger'}[riverStatus]">
+			<div class="card text-white status-tile" [ngClass]="{'NORMAL': 'bg-success', 'ATTENTION': 'bg-warning', 'ALERT': 'bg-alert', 'READINESS': 'bg-danger'}[riverStatus]">
 				<div class="card-body pb-0">
 					<h1 class="mb-0">{{riverStatus | riverStatus: riverStatus}}</h1>
 					<div class="btn-group float-right">
