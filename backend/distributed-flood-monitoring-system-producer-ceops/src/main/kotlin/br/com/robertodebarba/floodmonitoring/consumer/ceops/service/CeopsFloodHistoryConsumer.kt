@@ -64,7 +64,8 @@ class CeopsFloodHistoryConsumer {
                     val level = floodData.attr("data-level").toFloat()
                     val city = getCityNameByIndex(cities, index)
 
-                    floods.add(Flood(city = city,
+                    floods.add(Flood(id = null,
+                            city = city,
                             federationUnit = state,
                             level = level,
                             date = date ?: LocalDate.MIN))

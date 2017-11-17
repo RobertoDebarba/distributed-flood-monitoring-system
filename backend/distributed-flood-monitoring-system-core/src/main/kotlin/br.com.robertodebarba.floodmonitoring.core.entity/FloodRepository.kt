@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository
 @Component
 interface FloodRepository : MongoRepository<Flood, String>, PagingAndSortingRepository<Flood, String> {
 
-    fun findAllByOrderByYearDesc(pageable: Pageable): Page<Flood>
+    fun findAllByOrderByDateDesc(pageable: Pageable): Page<Flood>
 
 }

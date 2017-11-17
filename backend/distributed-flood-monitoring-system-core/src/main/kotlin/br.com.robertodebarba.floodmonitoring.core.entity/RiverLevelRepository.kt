@@ -18,4 +18,5 @@ interface RiverLevelRepository : MongoRepository<RiverLevel, String>, PagingAndS
     fun findByRiverAndCityAndFederationUnitOrderByTimeDesc(river: String, city: String, federationUnit: String, pageable: Pageable): Page<RiverLevel>
 
     fun findFirst1ByOrderByTimeDesc(): RiverLevel
+
 }

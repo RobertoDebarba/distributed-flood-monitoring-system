@@ -17,7 +17,7 @@ class RiverLevelMapper {
         val city = "Blumenau"
         val federationUnit = "SC"
 
-        return RiverLevel(time = time, level = level, river = river, city = city, federationUnit = federationUnit)
+        return RiverLevel(id = null, time = time, level = level, river = river, city = city, federationUnit = federationUnit)
     }
 
 }

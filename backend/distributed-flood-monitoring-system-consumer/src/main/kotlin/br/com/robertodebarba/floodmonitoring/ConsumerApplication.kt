@@ -3,9 +3,7 @@ package br.com.robertodebarba.floodmonitoring
 import br.com.robertodebarba.floodmonitoring.consumer.FloodConsumer
 import br.com.robertodebarba.floodmonitoring.consumer.RainFallConsumer
 import br.com.robertodebarba.floodmonitoring.consumer.RiverLevelConsumer
-import br.com.robertodebarba.floodmonitoring.core.entity.Flood
-import br.com.robertodebarba.floodmonitoring.core.entity.RainFall
-import br.com.robertodebarba.floodmonitoring.core.entity.RiverLevel
+import br.com.robertodebarba.floodmonitoring.core.entity.*
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.SpringApplication
@@ -40,9 +38,9 @@ class ConsumerApplication {
     fun init() {
         consumerType.split(";").forEach {
             when (it) {
-                "riverlevel" -> riverLevelConsumer.consume<RiverLevel>()
-                "rainfall" -> rainFallConsumer.consume<RainFall>()
-                "flood" -> floodConsumer.consume<Flood>()
+                "riverlevel" -> riverLevelConsumer.consume<RiverLevel, RiverLevelSHA1>()
+                "rainfall" -> rainFallConsumer.consume<RainFall, RainFallSHA1>()
+                "flood" -> floodConsumer.consume<Flood, FloodSHA1>()
             }
         }
     }

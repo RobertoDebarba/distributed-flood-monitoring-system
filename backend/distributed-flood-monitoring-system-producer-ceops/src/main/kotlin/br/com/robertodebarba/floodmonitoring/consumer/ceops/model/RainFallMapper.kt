@@ -17,7 +17,7 @@ class RainFallMapper {
         val city = "Blumenau"
         val federationUnit = "SC"
 
-        return RainFall(time = time, intensity = intensity, stationName = stationName, city = city, federationUnit = federationUnit)
+        return RainFall(id = null, time = time, intensity = intensity, stationName = stationName, city = city, federationUnit = federationUnit)
     }
 
 }

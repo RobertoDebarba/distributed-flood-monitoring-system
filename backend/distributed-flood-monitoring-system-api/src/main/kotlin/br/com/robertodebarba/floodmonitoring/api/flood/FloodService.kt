@@ -18,7 +18,7 @@ class FloodService {
 
     fun getFloods(pageable: Pageable) =
             dto {
-                repository.findAllByOrderByYearDesc(pageable)
+                repository.findAllByOrderByDateDesc(pageable)
             }
 
     private fun dto(producer: () -> Page<Flood>): Page<FloodDTO> =

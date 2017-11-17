@@ -10,10 +10,15 @@ import javax.annotation.Generated
 @Document
 @CompoundIndex(name = "river", def = "{'river':1, 'city':1, 'federationUnit':1}")
 data class RiverLevel(
-        @Generated @Id var id: String = UUID.randomUUID().toString(),
+        @Generated @Id var id: String? = UUID.randomUUID().toString(),
         var time: LocalDateTime = LocalDateTime.now(),
         var level: Float = 0F,
         var river: String = "uninformed",
         var city: String = "uninformed",
         var federationUnit: String = "uninformed"
-)
+) : Entity {
+    override fun getRawId(): String? = id
+    override fun setRawId(id: String) {
+        this.id = id
+    }
+}
