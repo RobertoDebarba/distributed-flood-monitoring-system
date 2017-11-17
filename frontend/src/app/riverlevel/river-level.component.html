@@ -21,14 +21,14 @@
 					<table class="table table-striped">
 						<thead>
 						<tr>
-							<th>Hora</th>
-							<th>Nível do Rio</th>
+							<th class="col-2 text-center">Hora</th>
+							<th class="col-2 text-center">Nível do Rio</th>
 						</tr>
 						</thead>
 						<tbody>
 						<tr *ngFor="let riverLevel of riverLevels">
-							<th class="font-weight-normal">{{ riverLevel.time | date:'HH:mm - dd/MM/yy' }}</th>
-							<td>{{ riverLevel.level | number:'1.2-2' }} m</td>
+							<th class="font-weight-normal text-center">{{ riverLevel.time | date:'HH:mm - dd/MM/yy' }}</th>
+							<td class="text-center">{{ riverLevel.level | number:'1.2-2' }} m</td>
 						</tr>
 						<tr>
 						</tbody>

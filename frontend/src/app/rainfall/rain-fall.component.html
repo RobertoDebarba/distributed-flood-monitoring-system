@@ -21,14 +21,14 @@
 					<table class="table table-striped">
 						<thead>
 						<tr>
-							<th>Hora</th>
-							<th>Índice pluviométrico</th>
+							<th class="col-2 text-center">Hora</th>
+							<th class="col-2 text-center">Índice pluviométrico</th>
 						</tr>
 						</thead>
 						<tbody>
 						<tr *ngFor="let rainFall of rainFalls">
-							<th class="font-weight-normal">{{ rainFall.time | date:'HH:mm - dd/MM/yy' }}</th>
-							<td>{{ rainFall.intensity | number:'1.2-2' }} mm</td>
+							<th class="font-weight-normal text-center">{{ rainFall.time | date:'HH:mm - dd/MM/yy' }}</th>
+							<td class="text-center">{{ rainFall.intensity | number:'1.2-2' }} mm</td>
 						</tr>
 						<tr>
 						</tbody>

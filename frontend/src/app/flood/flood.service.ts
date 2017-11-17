@@ -20,7 +20,7 @@ export class FloodService {
 	}
 
 	public getFloods(): Observable<Flood[]> {
-		return this.http.get(environment.api + 'flood?size=10')
+		return this.http.get(environment.api + 'flood?size=20')
 			.map((res: Response) => res.json().content);
 	}
 
