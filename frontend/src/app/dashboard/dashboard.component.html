@@ -23,7 +23,7 @@
 		</div>
 		<div class="col-sm-4">
 			<a href="#/rainfall" style="text-decoration:none">
-				<div class="card text-white" [ngClass]="{'NORMAL': 'bg-success', 'MODERATE': 'bg-warning', 'HEAVY': 'bg-alert', 'VERY_STRONG' : 'bg-danger'}[rainIntensity]">
+				<div class="card text-white" [ngClass]="{'LIGHT': 'bg-success', 'MODERATE': 'bg-warning', 'HEAVY': 'bg-alert', 'VERY_STRONG' : 'bg-danger'}[rainIntensity]">
 					<div class="card-body pb-0">
 						<h1 class="mb-0">{{rainIntensity | rainIntensity: rainIntensity}}</h1>
 						<div class="btn-group float-right">

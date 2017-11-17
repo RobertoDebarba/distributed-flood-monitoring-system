@@ -4,8 +4,8 @@ import {Pipe, PipeTransform} from "@angular/core";
 export class RainIntensityPipe implements PipeTransform {
 	transform(value: string): string {
 		switch (value) {
-			case "NORMAL":
-				return "Normal";
+			case "LIGHT":
+				return "Leve";
 			case "MODERATE":
 				return "Moderada";
 			case "HEAVY":
