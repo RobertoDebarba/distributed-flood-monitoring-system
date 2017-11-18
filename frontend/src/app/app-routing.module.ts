@@ -18,6 +18,10 @@ export const routes: Routes = [
 	{
 		path: 'flood',
 		loadChildren: 'app/flood/flood.module#FloodModule'
+	},
+	{
+		path: 'touch',
+		loadChildren: 'app/touch/touch.module#TouchModule'
 	}
 ];
 

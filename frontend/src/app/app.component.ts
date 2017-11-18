@@ -19,6 +19,8 @@ export class AppComponent {
 		{title: 'Enchentes', route: 'flood'}
 	];
 
+	public touchPage: Page = {title: 'Contato', route: 'touch'};
+
 	constructor(private router: Router) {
 	}
 

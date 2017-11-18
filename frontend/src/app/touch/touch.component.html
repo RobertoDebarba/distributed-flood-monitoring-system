@@ -1,0 +1,50 @@
+<div class="animated fadeIn">
+	<div class="row">
+		<div class="page-title">Contato</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<div class="card">
+				<div class="card-block">
+					<alert-message *ngIf="alert.isVisible" [message]="alert.message" [isError]="alert.isError"></alert-message>
+					<form #touchForm="ngForm" class="form-horizontal" ngNativeValidate>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-user"></i>
+								</span>
+								<input type="text" class="form-control" placeholder="Nome" id="name"
+									   name="name" [(ngModel)]="name">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-envelope"></i>
+								</span>
+								<input type="email" class="form-control" placeholder="Email" id="email"
+									   name="email" [(ngModel)]="email" required email>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="input-group">
+								<span class="input-group-addon">
+									<i class="fa fa-asterisk"></i>
+								</span>
+								<textarea id="message" class="form-control" name="message"
+										  placeholder="Mensagem" rows="5" [(ngModel)]="message">
+								</textarea>
+							</div>
+						</div>
+						<div class="form-group form-actions">
+							<button class="btn btn-sm btn-success" type="submit"
+									[disabled]="!touchForm.form.valid" (click)="postTouch()">Enviar
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
