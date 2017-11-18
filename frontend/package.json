@@ -15,6 +15,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^5.0.2",
     "@angular/common": "4.3.6",
     "@angular/compiler": "4.3.6",
     "@angular/core": "4.3.6",
@@ -25,6 +26,7 @@
     "@angular/router": "4.3.6",
     "@angular/upgrade": "4.3.6",
     "angular2-text-mask": "^8.0.4",
+    "angular2-toaster": "^4.0.1",
     "chart.js": "2.6.0",
     "core-js": "2.5.0",
     "moment": "2.18.1",

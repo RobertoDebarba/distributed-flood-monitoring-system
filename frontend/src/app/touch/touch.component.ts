@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Touch, TouchService} from './touch.service';
-import {Alert} from '../shared/alert-message/alert-message.component';
+import {Toast, ToasterConfig, ToasterService} from 'angular2-toaster';
 
 @Component({
 	templateUrl: 'touch.component.html',
@@ -11,9 +11,14 @@ export class TouchComponent {
 	public name: string;
 	public email: string;
 	public message: string;
-	alert: Alert = new Alert();
 
-	constructor(private touchService: TouchService) {
+	public configToaster: ToasterConfig = new ToasterConfig({
+		positionClass: 'toast-top-right',
+		limit: 1,
+		animation: 'fade'
+	});
+
+	constructor(private touchService: TouchService, private toasterService: ToasterService) {
 	}
 
 	public postTouch(): void {
@@ -23,8 +28,21 @@ export class TouchComponent {
 			message: this.message
 		};
 		this.touchService.postTouch(touch).subscribe(
-			res => this.alert.warn("E-mail enviado com sucesso!", false),
-			err => this.alert.warn(`Ocorreu um erro ao enviar o e-mail. Mensagem: ${err.text()}`, true));
+			() => {
+				var toast: Toast = {
+					type: 'success',
+					title: 'Sucesso',
+					body: 'E-mail enviado com sucesso!'
+				};
+				this.toasterService.pop(toast);
+			},
+			err => {
+				var toast: Toast = {
+					type: 'error',
+					title: 'Erro',
+					body: `Ocorreu um erro ao enviar o e-mail. Mensagem: ${err.text()}`
+				};
+				this.toasterService.pop(toast);
+			});
 	}
-
 }

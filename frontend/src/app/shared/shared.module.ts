@@ -1,10 +1,10 @@
-import { NgModule }            from '@angular/core';
-import { CommonModule }        from '@angular/common';
-import { FormsModule }         from '@angular/forms';
-import {LevelChartComponent} from "./level-chart/level-chart.component";
-import {AlertMessageComponent} from './alert-message/alert-message.component';
-import {TextMaskModule} from "angular2-text-mask";
-import {ChartsModule} from "ng2-charts";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {FormsModule} from '@angular/forms';
+import {LevelChartComponent} from './level-chart/level-chart.component';
+import {TextMaskModule} from 'angular2-text-mask';
+import {ChartsModule} from 'ng2-charts';
+import {ToasterModule} from 'angular2-toaster';
 
 @NgModule({
 	imports: [
@@ -12,19 +12,20 @@ import {ChartsModule} from "ng2-charts";
 		FormsModule,
 		ChartsModule,
 		TextMaskModule,
+		ToasterModule
 	],
 	declarations: [
-		LevelChartComponent,
-		AlertMessageComponent
+		LevelChartComponent
 	],
 	exports: [
 		CommonModule,
 		FormsModule,
 		ChartsModule,
 		TextMaskModule,
-		LevelChartComponent,
-		AlertMessageComponent
+		ToasterModule,
+		LevelChartComponent
 	]
 })
 
-export class SharedModule { }
+export class SharedModule {
+}

@@ -3,11 +3,14 @@
 		<div class="page-title">Contato</div>
 	</div>
 
+
 	<div class="row">
 		<div class="col-12">
 			<div class="card">
 				<div class="card-block">
-					<alert-message *ngIf="alert.isVisible" [message]="alert.message" [isError]="alert.isError"></alert-message>
+					<div>
+						<toaster-container [toasterconfig]="configToaster"></toaster-container>
+					</div>
 					<form #touchForm="ngForm" class="form-horizontal" ngNativeValidate>
 						<div class="form-group">
 							<div class="input-group">

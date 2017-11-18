@@ -13,6 +13,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {Http, HttpModule, RequestOptions, XHRBackend} from "@angular/http";
 import {interceptHttpFactory, InterceptHttpService} from "./providers/http/intercept-http.service";
 import {DashboardModule} from "./dashboard/dashboard.module";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
 	imports: [
@@ -22,7 +23,8 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 		DropdownModule.forRoot(),
 		TabsModule.forRoot(),
 		ChartsModule,
-		DashboardModule
+		DashboardModule,
+		BrowserAnimationsModule
 	],
 	declarations: [
 		AppComponent
