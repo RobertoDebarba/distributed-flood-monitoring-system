@@ -12,6 +12,8 @@ export class TouchComponent {
 	public email: string;
 	public message: string;
 
+	public isLoading: boolean;
+
 	public configToaster: ToasterConfig = new ToasterConfig({
 		positionClass: 'toast-top-right',
 		limit: 1,
@@ -21,7 +23,15 @@ export class TouchComponent {
 	constructor(private touchService: TouchService, private toasterService: ToasterService) {
 	}
 
+	private cleanForm(): void {
+		this.name = null;
+		this.email = null;
+		this.message = null;
+	}
+
 	public postTouch(): void {
+		this.isLoading = true;
+
 		let touch: Touch = {
 			name: this.name,
 			email: this.email,
@@ -31,17 +41,22 @@ export class TouchComponent {
 			() => {
 				var toast: Toast = {
 					type: 'success',
-					title: 'Sucesso',
-					body: 'E-mail enviado com sucesso!'
+					title: 'Mensagem enviada',
+					body: 'Sua mensagem foi enviada com sucesso!'
 				};
+
+				this.cleanForm();
+				this.isLoading = false;
 				this.toasterService.pop(toast);
 			},
 			err => {
 				var toast: Toast = {
 					type: 'error',
-					title: 'Erro',
-					body: `Ocorreu um erro ao enviar o e-mail. Mensagem: ${err.text()}`
+					title: 'Erro ao enviar mensagem',
+					body: err.text()
 				};
+
+				this.isLoading = false;
 				this.toasterService.pop(toast);
 			});
 	}

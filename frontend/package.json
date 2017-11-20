@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "4.3.6",
     "@angular/router": "4.3.6",
     "@angular/upgrade": "4.3.6",
+    "angular2-ladda": "^1.2.2",
     "angular2-text-mask": "^8.0.4",
     "angular2-toaster": "^4.0.1",
     "chart.js": "2.6.0",
