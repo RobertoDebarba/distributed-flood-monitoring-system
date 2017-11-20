@@ -14,6 +14,9 @@ class TouchService {
     @Value("\${password}")
     private lateinit var password: String
 
+    @Value("\${sentFrom}")
+    private lateinit var sentFrom: String
+
     @Value("\${sendTo}")
     private lateinit var sendTo: String
 
@@ -24,7 +27,7 @@ class TouchService {
             setSmtpPort(25)
             setAuthenticator(DefaultAuthenticator(email, password))
 
-            setFrom(email)
+            setFrom(sentFrom)
             subject = "[CLIMA ALERTA] Nova mensagem de ${touchDTO.name}"
             setMsg("${touchDTO.name} <${touchDTO.email}> enviou uma mensagem:\n\n${touchDTO.message}")
             addTo(sendTo)
