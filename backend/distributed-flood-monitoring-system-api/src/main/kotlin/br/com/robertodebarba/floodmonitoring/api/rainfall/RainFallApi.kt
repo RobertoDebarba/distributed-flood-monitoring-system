@@ -18,16 +18,16 @@ class RainFallApi {
 
     @CrossOrigin
     @RequestMapping("rainfall")
-    fun getRiverLevels(@RequestParam(required = false) stationName: String?,
-                       @RequestParam(required = false) city: String?,
-                       @RequestParam(required = false) federationUnit: String?,
-                       pageable: Pageable): Page<RainFallDTO> {
+    fun getRainFalls(@RequestParam(required = false) stationName: String?,
+                     @RequestParam(required = false) city: String?,
+                     @RequestParam(required = false) federationUnit: String?,
+                     pageable: Pageable): Page<RainFallDTO> {
 
         return if (stationName.isNullOrBlank() && city.isNullOrBlank() && federationUnit.isNullOrBlank()) {
-            service.getRiverLevels(pageable)
+            service.getRainFalls(pageable)
 
         } else if (!stationName.isNullOrBlank() && !city.isNullOrBlank() && !federationUnit.isNullOrBlank()) {
-            service.getRiverLevelsByRiverAndCityAndFederationUnit(stationName!!, city!!, federationUnit!!, pageable)
+            service.getRainFallByStationNameAndCityAndFederationUnit(stationName!!, city!!, federationUnit!!, pageable)
 
         } else {
             throw IllegalApiArgumentException("stationName, city and/or federationUnit not informed")

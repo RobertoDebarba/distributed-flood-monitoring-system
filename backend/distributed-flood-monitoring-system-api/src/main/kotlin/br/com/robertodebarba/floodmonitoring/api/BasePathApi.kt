@@ -5,10 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class ApplicationApi {
+class BasePathApi {
 
     @CrossOrigin
     @RequestMapping("/")
-    fun helloWorld() = "Hello World"
+    fun getSystemName() = "Distributed Flood Monitoring System"
 
 }

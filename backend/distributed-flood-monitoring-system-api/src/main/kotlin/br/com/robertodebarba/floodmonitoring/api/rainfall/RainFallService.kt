@@ -16,12 +16,12 @@ class RainFallService {
     @Autowired
     lateinit var repository: RainFallRepository
 
-    fun getRiverLevels(pageable: Pageable) =
+    fun getRainFalls(pageable: Pageable) =
             dto {
                 repository.findAllByOrderByTimeDesc(pageable)
             }
 
-    fun getRiverLevelsByRiverAndCityAndFederationUnit(stationName: String, city: String, federationUnit: String, pageable: Pageable) =
+    fun getRainFallByStationNameAndCityAndFederationUnit(stationName: String, city: String, federationUnit: String, pageable: Pageable) =
             dto {
                 repository.findByStationNameAndCityAndFederationUnitOrderByTimeDesc(stationName, city, federationUnit, pageable)
             }
