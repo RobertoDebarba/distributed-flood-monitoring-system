@@ -29,7 +29,7 @@ class FloodProducer {
             val level = readLine()?.toFloat() ?: 0F
 
 
-            val rainFall = Flood(city = city, federationUnit = federationUnit, year = year, date = date, level = level)
+            val rainFall = Flood(city = city, federationUnit = federationUnit, date = date, level = level)
 
             channel.queueDeclare(QUEUE_NAME, false, false, false, null)
             channel.basicPublish("", QUEUE_NAME, null, Gson().toJson(rainFall).toByteArray())
