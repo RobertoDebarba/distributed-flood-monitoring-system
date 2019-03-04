@@ -33,4 +33,4 @@ This project is a distributed flood monitoring system. It allows adding new data
 
 * [Roberto Luiz Debarba](https://github.com/RobertoDebarba)
 * [Matheus Hoeltgebaum Pereira](https://github.com/matheushoeltgebaum)
-* [Matheus Adriano Pereira](https://github.com/Itatakaru)
+* [Matheus Adriano Pereira](https://github.com/matheusPereiraKrumm)
