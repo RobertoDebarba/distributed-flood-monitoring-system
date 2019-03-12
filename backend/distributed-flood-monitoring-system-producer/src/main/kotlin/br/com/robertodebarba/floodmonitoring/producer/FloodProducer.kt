@@ -5,14 +5,13 @@ import br.com.robertodebarba.floodmonitoring.core.amqp.QueueName
 import br.com.robertodebarba.floodmonitoring.core.entity.Flood
 import com.google.gson.Gson
 import java.time.LocalDate
-import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
 class FloodProducer {
 
     private val QUEUE_NAME = QueueName.FLOOD.name
 
-    fun Produce() {
+    fun produce() {
         val channel = AmqpConnection.instance.createChannel()
         val ceopsDatePatern = DateTimeFormatter.ofPattern("dd/MM/yyyy")
 

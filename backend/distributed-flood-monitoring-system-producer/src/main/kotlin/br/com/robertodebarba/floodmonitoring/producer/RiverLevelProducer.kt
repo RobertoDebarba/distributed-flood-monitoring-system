@@ -11,7 +11,7 @@ class RiverLevelProducer {
 
     private val QUEUE_NAME = QueueName.RIVER_LEVEL.name
 
-    fun Produce() {
+    fun produce() {
         println("Cidade : ")
         val city = readLine() ?: "uninformed"
         println("Estado : ")

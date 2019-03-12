@@ -11,7 +11,7 @@ class RainFallProducer {
 
     private val QUEUE_NAME = QueueName.RAIN_FALL.name
 
-    fun Produce() {
+    fun produce() {
         println("Cidade : ")
         val city = readLine() ?: "uninformed"
         println("Estado : ")
