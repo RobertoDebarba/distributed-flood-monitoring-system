@@ -1,27 +1,33 @@
 # Clima Alerta - Distributed flood monitoring system
 
-Clima Alerta is a micro service flood monitoring system. It allows adding new data from new processes, as well as adding new sensors, in an easy way without affecting other processes with zero down time.
+Clima Alerta is a micro service flood monitoring system. The system integrates climate data such as river level and flood history into a modern and resilient platform that allows the the integration of multiple data sources and clients.  
+  
+The platform already delivers a modern frontend and integration with several platforms. Install and run!
 
 ## Main features
 
 * Friendly user interface based on dashboards
-* AccuWather integration
+* [AccuWather](https://www.accuweather.com) integration
 * Flood, rainfall and river level data with status and historic
 * Getting in touch with email integration
 * Built in client dashboard made with Angular
 * Built in data source for mock data
-* Built in data source for CEOPS integration
+* Built in data source for [CEOPS](http://ceops.furb.br/) integration
 * Plugable clients via REAST APIs
 * Plugable data sources (producers) via AMQP Broker
 * Micro services based system
 * Scalable and resilient services
 * Zero down time update
 
-### Dashboard
+### Frontend
 
+#### Dashboard
 ![diagram](https://github.com/RobertoDebarba/distributed-flood-monitoring-system/blob/master/specs/prints/print1.png)
+#### River level
 ![diagram](https://github.com/RobertoDebarba/distributed-flood-monitoring-system/blob/master/specs/prints/print2.png)
+#### Flood history
 ![diagram](https://github.com/RobertoDebarba/distributed-flood-monitoring-system/blob/master/specs/prints/print3.png)
+#### Get in touch
 ![diagram](https://github.com/RobertoDebarba/distributed-flood-monitoring-system/blob/master/specs/prints/print4.png)
 
 ## Architecture diagram
@@ -37,7 +43,7 @@ Clima Alerta is a micro service flood monitoring system. It allows adding new da
 * [Node 6.9.0](https://nodejs.org/en/)
 * [NPM 3.0.0](https://www.npmjs.com/)
 
-## How to run server
+## How to run
 
 ### REST API (distributed-flood-monitoring-system-api)
 
